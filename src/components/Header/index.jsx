@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../Button";
 
 const StyledHeader = styled.header`
     display: flex;
@@ -7,6 +8,8 @@ const StyledHeader = styled.header`
     align-items: center;
     margin: 0;
     padding: 36px 50px;
+    border-bottom: 4px solid var(--blue);
+    box-shadow: 0px 25px 29px -29px rgba(34, 113, 209, 0.7);
     img{
         width: 170px;
         scale: 1;
@@ -28,10 +31,10 @@ function Header() {
         <nav>
             <ul>
                 <li>
-                    <button>Home</button>
+                    <Button>Home</Button>
                 </li>
                 <li>
-                    <button>New video</button>
+                    <Button>New video</Button>
                 </li>
             </ul>
         </nav>
