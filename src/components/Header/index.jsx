@@ -31,7 +31,7 @@ function Header() {
         <nav>
             <ul>
                 <li>
-                    <Button>Home</Button>
+                    <Button $active={true} >Home</Button>
                 </li>
                 <li>
                     <Button>New video</Button>
