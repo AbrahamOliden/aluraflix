@@ -1,8 +1,13 @@
+import Header from "../Header";
+import Footer from "../Footer";
+
 function DefaultPage({ children }) {
   return (
-    <div>
+    <>
+        <Header />
         {children}
-    </div>
+        <Footer />
+    </>
   );
 };
 
