@@ -1,7 +1,8 @@
 // import './App.css'
 import GlobalStyles from "./GlobalStyles";
-import Banner from "./components/Banner";
 import Header from "./components/Header";
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <GlobalStyles id="global-styles" >
         <Header />
         <Banner />
+        <Footer />
     </GlobalStyles>
   );
 };
