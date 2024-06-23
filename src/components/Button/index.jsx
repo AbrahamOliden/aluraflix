@@ -7,10 +7,12 @@ const StyledButton = styled.button`
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
-    border: 2px solid var(--white);
+    border: ${props => props.$active 
+        ? "2px solid var(--blue)" : "2px solid var(--white)"} ;
     border-radius: 10px;
     background-color: inherit;
-    color: inherit;
+    color: ${props => props.$active 
+        ? "var(--blue)" : "inherit"} ;
     cursor: pointer;
 `;
 
