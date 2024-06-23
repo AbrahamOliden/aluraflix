@@ -1,16 +1,15 @@
 // import './App.css'
 import GlobalStyles from "./GlobalStyles";
-import Header from "./components/Header";
 import Banner from "./components/Banner";
-import Footer from "./components/Footer";
+import DefaultPage from "./components/DefaultPage";
 
 function App() {
 
   return (
     <GlobalStyles id="global-styles" >
-        <Header />
-        <Banner />
-        <Footer />
+        <DefaultPage>
+          <Banner />
+        </DefaultPage>
     </GlobalStyles>
   );
 };
