@@ -6,7 +6,7 @@ const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
     padding: 36px 0;
-    background-color: #0a0a0a;
+    background-color: var(--black);
     img {
         width: 170px;
     }

@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
     align-items: center;
     margin: 0;
     padding: 36px 50px;
+    background-color: var(--black);
     border-bottom: 4px solid var(--blue);
     box-shadow: 0px 25px 29px -29px rgba(34, 113, 209, 0.7);
     img{
