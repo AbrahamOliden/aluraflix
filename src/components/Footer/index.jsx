@@ -5,6 +5,11 @@ const StyledFooter = styled.footer`
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    padding: 36px 0;
+    background-color: #0a0a0a;
+    img {
+        width: 170px;
+    }
 `
 
 function Footer() {
