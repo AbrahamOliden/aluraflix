@@ -5,6 +5,7 @@ const StyledElement = styled.li`
     height: 300px;
     figure {
         margin: 0;
+        /* weird gap here  */
     }
     img {
         width: 100%;
