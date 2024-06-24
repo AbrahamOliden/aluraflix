@@ -5,7 +5,9 @@ const StyledCarousel = styled.section`
      display: flex;
      flex-flow: column nowrap;
      justify-content: flex-start;
-     button {
+     padding: 40px;
+     gap: 40px;
+     &>button {
         min-width: fit-content;
         width: 350px;
         background-color: ${props => props.$color};
@@ -24,7 +26,10 @@ const StyledCarousel = styled.section`
         flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: center;
-        gap: 30px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        gap: 20px;
         list-style: none;
      }
 `;
