@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import VideoCard from "../VideoCard";
 
 const StyledCarousel = styled.section`
      display: flex;
@@ -33,9 +34,9 @@ function Carousel({ text, color }) {
         <StyledCarousel $color={color} >
             <button >{text}</button>
             <ul>
-                <li>Video 01</li>
-                <li> Video 02</li>
-                <li>Video 03</li>
+                <VideoCard />
+                <VideoCard />
+                <VideoCard />
             </ul>
         </StyledCarousel>
     )
