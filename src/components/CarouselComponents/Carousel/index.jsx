@@ -34,9 +34,9 @@ function Carousel({ text, color }) {
         <StyledCarousel $color={color} >
             <button >{text}</button>
             <ul>
-                <VideoCard />
-                <VideoCard />
-                <VideoCard />
+                <VideoCard color={color} />
+                <VideoCard color={color} />
+                <VideoCard color={color} />
             </ul>
         </StyledCarousel>
     )
