@@ -1,9 +1,66 @@
 {
     "videos": {
         "categories": {
-            "front-end": [],
-            "back-end": [],
-            "innovation-management": []
+            "front-end": [
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }
+            ],
+            "back-end": [
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }
+            ],
+            "innovation-management": [
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }, 
+                {
+                    "id": "",
+                    "title": "",
+                    "image": "",
+                    "path": ""
+                }
+            ]
         }
     }
 }
