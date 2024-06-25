@@ -40,8 +40,8 @@ const StyledList = styled.ul`
 
 function Carousel({ text, color }) {
     return (
-        <StyledCarousel $color={color} >
-            <StyledButton >{text}</StyledButton>
+        <StyledCarousel >
+            <StyledButton $color={color} >{text}</StyledButton>
             <StyledList>
                 <VideoCard color={color} />
                 <VideoCard color={color} />
