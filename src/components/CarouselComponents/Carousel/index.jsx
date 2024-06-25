@@ -7,20 +7,21 @@ const StyledCarousel = styled.section`
      justify-content: flex-start;
      padding: 40px;
      gap: 40px;
-     &>button {
-        min-width: fit-content;
-        width: 350px;
-        background-color: ${props => props.$color};
-        color: var(--white);
-        font-size: 1.5rem;
-        font-weight: 700;
-        text-align: center;
-        text-transform: uppercase;
-        padding: 20px;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-     }
+`;
+
+const StyledButton = styled.button`
+    min-width: fit-content;
+    width: 350px;
+    background-color: ${props => props.$color};
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 `;
 
 const StyledList = styled.ul`
@@ -35,12 +36,12 @@ const StyledList = styled.ul`
     overflow-x: scroll;
     scrollbar-color: var(--blue) var(--black);
     scrollbar-width: 12px;
-`
+`;
 
 function Carousel({ text, color }) {
     return (
         <StyledCarousel $color={color} >
-            <button >{text}</button>
+            <StyledButton >{text}</StyledButton>
             <StyledList>
                 <VideoCard color={color} />
                 <VideoCard color={color} />
