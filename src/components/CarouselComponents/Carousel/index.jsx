@@ -21,32 +21,34 @@ const StyledCarousel = styled.section`
         border-radius: 15px;
         cursor: pointer;
      }
-     ul {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        gap: 40px;
-        list-style: none;
-        overflow-x: scroll;
-        scrollbar-color: var(--blue);
-     }
 `;
+
+const StyledList = styled.ul`
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 40px;
+    list-style: none;
+    overflow-x: scroll;
+    scrollbar-color: var(--blue) var(--black);
+    scrollbar-width: 12px;
+`
 
 function Carousel({ text, color }) {
     return (
         <StyledCarousel $color={color} >
             <button >{text}</button>
-            <ul>
+            <StyledList>
                 <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />
-            </ul>
+            </StyledList>
         </StyledCarousel>
     )
 }
