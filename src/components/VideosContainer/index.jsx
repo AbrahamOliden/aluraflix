@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import VideoCard from "../VideoCard";
 
-const StyledCarousel = styled.section`
+const StyledContainer = styled.section`
      display: flex;
      flex-flow: column nowrap;
      justify-content: flex-start;
@@ -38,9 +38,9 @@ const StyledList = styled.ul`
     scrollbar-width: 12px;
 `;
 
-function Carousel({ text, color }) {
+function VideoContainer({ text, color }) {
     return (
-        <StyledCarousel >
+        <StyledContainer >
             <StyledButton $color={color} >{text}</StyledButton>
             <StyledList>
                 <VideoCard color={color} />
@@ -50,8 +50,8 @@ function Carousel({ text, color }) {
                 <VideoCard color={color} />
                 <VideoCard color={color} />
             </StyledList>
-        </StyledCarousel>
+        </StyledContainer>
     );
 };
 
-export default Carousel;
+export default VideoContainer;
