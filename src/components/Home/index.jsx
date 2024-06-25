@@ -1,11 +1,11 @@
-import Carousel from "../CarouselComponents/Carousel";
+import VideosContainer from "../VideosContainer"
 
 function Home() {
     return (
         <main id="home">
-            <Carousel text={"Front End"} color={"#6BD1FF"} />
-            <Carousel text={"Back End"} color={"#00C86F"} />
-            <Carousel text={"Innovacion & Gestion"} color={"#FFBA05"} />
+            <VideosContainer text={"Front End"} color={"#6BD1FF"} />
+            <VideosContainer text={"Back End"} color={"#00C86F"} />
+            <VideosContainer text={"Innovacion & Gestion"} color={"#FFBA05"} />
         </main>
     );
 };
