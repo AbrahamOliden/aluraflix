@@ -8,8 +8,8 @@ function App() {
 
   return (
     <GlobalStyles id="global-styles" >
-        <DefaultPage>
-          <Banner />
+        <DefaultPage id="default-page" >
+          <Banner id="banner" />
           <Home />
         </DefaultPage>
     </GlobalStyles>
