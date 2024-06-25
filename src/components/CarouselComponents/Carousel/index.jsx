@@ -28,9 +28,10 @@ const StyledCarousel = styled.section`
         align-items: center;
         padding: 0;
         margin: 0;
-        width: 100%;
-        gap: 20px;
+        gap: 40px;
         list-style: none;
+        overflow-x: scroll;
+        scrollbar-color: var(--blue);
      }
 `;
 
@@ -39,6 +40,9 @@ function Carousel({ text, color }) {
         <StyledCarousel $color={color} >
             <button >{text}</button>
             <ul>
+                <VideoCard color={color} />
+                <VideoCard color={color} />
+                <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />
                 <VideoCard color={color} />

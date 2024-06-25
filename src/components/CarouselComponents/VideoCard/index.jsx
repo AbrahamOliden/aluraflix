@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 const StyledElement = styled.li`
-    width: 30%;
-    height: 300px;
     figure {
         margin: 0;
-        /* weird gap here  */
         display: flex;
         flex-flow: column nowrap;
         gap: 0;
+        width: 25vw;
     }
     img {
         width: 100%;
