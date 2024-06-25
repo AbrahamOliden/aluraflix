@@ -7,6 +7,7 @@ const StyledElement = styled.li`
         flex-flow: column nowrap;
         gap: 0;
         width: 25vw;
+        margin-bottom: 20px;
     }
     img {
         width: 100%;
