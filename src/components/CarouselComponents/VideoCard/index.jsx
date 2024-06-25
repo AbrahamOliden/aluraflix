@@ -6,6 +6,9 @@ const StyledElement = styled.li`
     figure {
         margin: 0;
         /* weird gap here  */
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0;
     }
     img {
         width: 100%;
