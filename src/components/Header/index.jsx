@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
     display: flex;
@@ -32,10 +33,14 @@ function Header() {
         <nav>
             <ul>
                 <li>
-                    <Button $active={true} >Home</Button>
+                    <Link to="/">
+                        <Button $active={true} >Home</Button>
+                    </Link>
                 </li>
                 <li>
-                    <Button>New video</Button>
+                    <Link to="/new-video" >
+                        <Button>New video</Button>
+                    </Link>
                 </li>
             </ul>
         </nav>
