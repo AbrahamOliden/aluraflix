@@ -27,25 +27,25 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
-  return (
-    <StyledHeader id="header" > 
-        <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">
-                        <Button $active={true} >Home</Button>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/new-video" >
-                        <Button>New video</Button>
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    </StyledHeader>
-  )
+    return (
+        <StyledHeader id="header" >
+            <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/">
+                            <Button $active={true} >Home</Button>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/new-video" >
+                            <Button>New video</Button>
+                        </Link>
+                    </li>
+                </ul>
+            </nav>
+        </StyledHeader>
+    )
 }
 
 export default Header
