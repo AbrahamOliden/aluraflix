@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import VideoForm from "../Form/VideoForm";
+import VideoForm from "../../Form/VideoForm";
 
 const StyledSection = styled.section`
   min-height: fit-content;
