@@ -1,26 +1,59 @@
 import styled from "styled-components";
+import StyledButton from "../../Button";
 
-const StyledForm = styled.form`
+const StyledField = styled.fieldset`
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
-`
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px 30px;
+    border: none;
+`;
+
+const FlexContainer = styled.div`
+    width: ${props => props.$width ? `${props.$width}` : "350px"};
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: left;
+    &>textarea {
+        width: 50%;
+        min-width: 350px;
+    }
+`;
 
 function VideoForm() {
     return (
-        <StyledForm>
-            <label htmlFor="title">Title</label>
-            <input type="text" name="title" placeholder="Title or smth" />
+        <form>
+            <StyledField>
+                <FlexContainer role="none">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" placeholder="Title or smth" />
+                </FlexContainer>
 
-            <label htmlFor="category">Category</label>
-            <input type="text" name="category" placeholder="category" />
+                <FlexContainer role="none">
+                    <label htmlFor="category">Category</label>
+                    <input type="text" name="category" placeholder="category" />
+                </FlexContainer>
 
-            <label htmlFor="image">Image</label>
-            <input type="text" name="image" placeholder="image " />
+                <FlexContainer role="none">
+                    <label htmlFor="image">Image</label>
+                    <input type="text" name="image" placeholder="image " />
+                </FlexContainer>
 
-            <label htmlFor="source">source</label>
-            <input type="text" name="source" placeholder="source" />
-        </StyledForm>
+                <FlexContainer role="none">
+                    <label htmlFor="source">source</label>
+                    <input type="text" name="source" placeholder="source" />
+                </FlexContainer>
+                <FlexContainer $width="100%" role="none" >
+                    <label htmlFor="description">description</label>
+                    <textarea name="description" id="description" cols="50" rows="10"></textarea>
+                </FlexContainer>
+
+                <StyledButton type="submit" >Submit</StyledButton>
+                <StyledButton>Clear</StyledButton>
+            </StyledField>
+
+        </form>
     );
 };
 
