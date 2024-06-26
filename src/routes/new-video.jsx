@@ -1,6 +1,5 @@
 import DefaultPage from "../components/DefaultPage";
-import NewVideo from "../components/NewVideo";
-
+import NewVideo from "../components/Registry/NewVideo";
 
 function NewVideoRoute() {
   return (
