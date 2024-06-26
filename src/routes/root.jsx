@@ -1,8 +1,11 @@
 import App from "../App";
+import DefaultPage from "../components/DefaultPage";
 
 function Root() {
     return (
-        <App />
+        <DefaultPage>
+            <App />
+        </DefaultPage>
     )
 }
 
