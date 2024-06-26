@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/root.jsx';
 import NotFound from './routes/not-found.jsx';
 import NewVideoRoute from './routes/new-video.jsx';
+import NewCategoryRoute from './routes/new-category.jsx';
 import './index.css'
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "new-video",
     element: <NewVideoRoute />
+  },
+  {
+    path: "new-category",
+    element: <NewCategoryRoute />
   }
 ])
 
