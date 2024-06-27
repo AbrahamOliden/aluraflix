@@ -1,0 +1,28 @@
+{
+    "videos": [
+        {
+            "title": "Frameworks de Front End",
+            "path": "https://www.youtube.com/watch?v=UNeKzI2WHgQ",
+            "image": "https://i.ytimg.com/vi/UNeKzI2WHgQ/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBI1fEW1c_tbaUao2D3USaogVXuGg",
+            "description": "¿Quieres conocer sobre los frameworks más utilizados en el mercado hoy en día? En este video nuestro instructor de Front End nos explicarás cuáles son los frameworks de Front más conocidos y las diferencias entre ellos.",
+            "category": "Front-end",
+            "id": 0
+        },
+        {
+            "title": "Consejos para crear tu Portfolio",
+            "path": "https://www.youtube.com/watch?v=lKaXteKYbSA",
+            "image": "https://i.ytimg.com/an_webp/lKaXteKYbSA/mqdefault_6s.webp?du=3000&sqp=CODc97MG&rs=AOn4CLAFVVsLilouyHKeUbgNMo3-UEUmCQ",
+            "description": "¿Quieres destacar como programador y captar la atención de reclutadores y clientes? En este video la instructora Jeanmarie Quijada, te enseñara varios tips esenciales para diseñar y construir un portfolio que muestre tus habilidades y proyectos de manera profesional",
+            "category": "Innovation-management",
+            "id": 1
+        },
+        {
+            "title": "Spring Framework. ¿Qué es ?",
+            "path": "https://www.youtube.com/watch?v=t-iqt1b2qqk",
+            "image": "https://i.ytimg.com/an_webp/t-iqt1b2qqk/mqdefault_6s.webp?du=3000&sqp=CL6r97MG&rs=AOn4CLDoG-xM-FSeZfxq85A7iPFm_623_A",
+            "description": "¿Busca un framework  para utilizar en sus proyectos? ¿Conoce Spring Framework? Spring es el framework más usado de Java. Nos ofrece herramientas que nos permiten crear proyectos más avanzados, con mejores prácticas y en menor tiempo. También posee una gran comunidad, lo que nos brinda muchísima documentación y ayuda.",
+            "category": "Back-end",
+            "id": 2
+        }
+    ]
+}
