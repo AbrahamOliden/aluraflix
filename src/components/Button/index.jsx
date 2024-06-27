@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
-const StyledButton = styled.button`
+export const ButtonContainer =  styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    &>div {
+        button {
+            margin-right: 20px;
+        }
+    }
+`;
+
+export const StyledButton = styled.button`
     min-width: 150px;
     padding: 15px 0;
     font-size: 1rem;
@@ -15,5 +27,3 @@ const StyledButton = styled.button`
         ? "var(--blue)" : "inherit"} ;
     cursor: pointer;
 `;
-
-export default StyledButton;
