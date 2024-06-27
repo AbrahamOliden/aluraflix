@@ -39,6 +39,7 @@ const StyledDropdown = styled.select` //? and then extend in styled components
 const StyledTextArea = styled.textarea` //? this 1 2
     width: 50%;
     min-width: 350px;
+    height: 180px;
     background-color: var(--dark-gray);
     color: var(--white);
     font-size: 1.2rem;
