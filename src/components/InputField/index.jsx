@@ -5,10 +5,6 @@ const FlexContainer = styled.div`
     display: flex;
     flex-flow: column nowrap;
     text-align: left;
-    &>textarea {
-        width: 50%;
-        min-width: 350px;
-    }
 `;
 
 const StyledLabel = styled.label` 
@@ -20,7 +16,7 @@ const StyledLabel = styled.label`
     text-transform: capitalize;
 `;
 
-const StyledInput = styled.input` //? All these styles might be combined
+const StyledText = styled.input` //? All these styles might be combined
     background-color: var(--dark-gray);
     color: var(--white);
     font-size: 1.2rem;
@@ -53,7 +49,7 @@ const StyledTextArea = styled.textarea` //? this 1 2
 `;
 
 const StyledColor = styled.input`
-    width: calc( 100% - 36px ); //37 px is for padding and border size
+    width: calc( 100% - 36px ); //36 px is for padding and border size
     padding: 16px;
     background-color: var(--dark-gray);
     border: 2px solid var(--blue);
@@ -63,76 +59,42 @@ const StyledColor = styled.input`
 
 function Input({ inputsArray }) {
 
+    const renderInput = input => {
+
+        const InputComponent = input.type === "text"
+            ? StyledText
+            : input.type === "select"
+                ? StyledDropdown
+                : input.type === "textarea"
+                    ? StyledTextArea
+                    : input.type === "color"
+                        ? StyledColor
+                        : null;
+
+        if (!InputComponent) {
+            console.log(`Input type not supported: ${input.type}`);
+            return null;
+        };
+
+        return (
+            <FlexContainer key={input.id} role="none" $width={input.width || null} >
+                <StyledLabel htmlFor={input.title} >
+                    {input.title}
+                </StyledLabel>
+
+                <InputComponent 
+                    type={input.type}
+                    name={input.title}
+                    placeholder={`Introduce ${input.title}`}
+                    required={input.required}
+                />
+            </FlexContainer>
+        )
+    }
+
     return (
         <>
-            {inputsArray.map(input => {
-
-                switch (input.type) {
-                    case "text":
-                        return ( //? This better be combined
-                            <FlexContainer key={input.id} role="none" $width={input.width}>
-                                <StyledLabel htmlFor={input.title}>
-                                    {input.title}
-                                </StyledLabel>
-
-                                <StyledInput
-                                    type={input.type}
-                                    name={input.title}
-                                    placeholder={`Introduce ${input.title}`}
-                                    required={input.required} >
-                                </StyledInput>
-                            </FlexContainer>
-                        );
-                    case "select":
-                        return (
-                            <FlexContainer key={input.id} role="none" >
-                                <StyledLabel htmlFor={input.title}>
-                                    {input.title}
-                                </StyledLabel>
-
-                                <StyledDropdown
-                                    type={input.type}
-                                    name={input.title}
-                                    placeholder={`Introduce ${input.title}`} 
-                                    required={input.required} >
-                                </StyledDropdown>
-                            </FlexContainer>
-                        );
-                    case "textarea":
-                        return (
-                            <FlexContainer key={input.id} role="none" $width="100%" >
-                                <StyledLabel htmlFor={input.title}>
-                                    {input.title}
-                                </StyledLabel>
-
-                                <StyledTextArea
-                                    type={input.type}
-                                    name={input.title}
-                                    placeholder={`Introduce ${input.title}`} 
-                                    cols={50}
-                                    rows={10}
-                                    required={input.required}>
-                                </StyledTextArea>
-                            </FlexContainer>
-                        );
-                    case "color":
-                        return (
-                            <FlexContainer key={input.id} role="none" $width={input.width} >
-                                <StyledLabel htmlFor={input.title}>
-                                    {input.title}
-                                </StyledLabel>
-
-                                <StyledColor
-                                    type={input.type}
-                                    name={input.title}
-                                    required={input.required}>
-                                </StyledColor>
-                            </FlexContainer>
-                        )
-                    default:
-                        return;
-                }
-            })}
+            {inputsArray.map(renderInput)}
         </>
     );
 };
