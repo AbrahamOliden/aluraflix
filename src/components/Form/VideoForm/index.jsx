@@ -45,7 +45,8 @@ function VideoForm() {
                         title: "description",
                         type: "textarea",
                         required: false,
-                        id: 4
+                        id: 4,
+                        width: "100%"
                     }
                 ]} />
 

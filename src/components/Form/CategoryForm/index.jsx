@@ -35,7 +35,8 @@ function CategoryForm() {
                         title: "description",
                         type: "textarea",
                         required: false,
-                        id: 2
+                        id: 2,
+                        width: "100%"
                     }
                 ]} />
                 <ButtonContainer role="none" id="button-container" >
