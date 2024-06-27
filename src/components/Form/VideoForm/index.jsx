@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledButton } from "../../Button";
+import { StyledButton, ButtonContainer } from "../../Button";
 import Input from "../../InputField";
 
 const StyledField = styled.fieldset`
@@ -11,22 +12,11 @@ const StyledField = styled.fieldset`
     border: none;
 `;
 
-// const FlexContainer = styled.div`
-//     width: ${props => props.$width ? `${props.$width}` : "350px"};
-//     display: flex;
-//     flex-flow: column nowrap;
-//     text-align: left;
-//     &>textarea {
-//         width: 50%;
-//         min-width: 350px;
-//     }
-// `;
-
 function VideoForm() {
     return (
         <form>
             <StyledField>
-                <Input inputsArray = {[
+                <Input inputsArray={[
                     {
                         title: "title",
                         type: "text",
@@ -59,8 +49,16 @@ function VideoForm() {
                     }
                 ]} />
 
-                <StyledButton type="submit" >Submit</StyledButton>
-                <StyledButton>Clear</StyledButton>
+                <ButtonContainer role="none" id="new-video-button-container">
+                    <div role="none" >
+                        <StyledButton type="submit" >Submit</StyledButton>
+                        <StyledButton>Clear</StyledButton>
+                    </div>
+
+                    <Link to="/new-category" >
+                        <StyledButton>New Category</StyledButton>
+                    </Link>
+                </ButtonContainer>
             </StyledField>
 
         </form>
