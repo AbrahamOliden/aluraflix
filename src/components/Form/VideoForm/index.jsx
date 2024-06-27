@@ -11,16 +11,16 @@ const StyledField = styled.fieldset`
     border: none;
 `;
 
-const FlexContainer = styled.div`
-    width: ${props => props.$width ? `${props.$width}` : "350px"};
-    display: flex;
-    flex-flow: column nowrap;
-    text-align: left;
-    &>textarea {
-        width: 50%;
-        min-width: 350px;
-    }
-`;
+// const FlexContainer = styled.div`
+//     width: ${props => props.$width ? `${props.$width}` : "350px"};
+//     display: flex;
+//     flex-flow: column nowrap;
+//     text-align: left;
+//     &>textarea {
+//         width: 50%;
+//         min-width: 350px;
+//     }
+// `;
 
 function VideoForm() {
     return (
