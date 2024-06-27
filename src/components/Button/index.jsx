@@ -5,6 +5,7 @@ export const ButtonContainer =  styled.div`
     flex-flow: row wrap;
     justify-content: space-between;
     width: 100%;
+    gap: 60px 0;
     &>div {
         button {
             margin-right: 20px;
