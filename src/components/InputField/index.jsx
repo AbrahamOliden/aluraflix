@@ -52,6 +52,15 @@ const StyledTextArea = styled.textarea` //? this 1 2
     border-radius: 10px;
 `;
 
+const StyledColor = styled.input`
+    width: calc( 100% - 36px ); //37 px is for padding and border size
+    padding: 16px;
+    background-color: var(--dark-gray);
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    box-sizing: content-box;
+`
+
 function Input({ inputsArray }) {
 
     return (
@@ -61,7 +70,7 @@ function Input({ inputsArray }) {
                 switch (input.type) {
                     case "text":
                         return ( //? This better be combined
-                            <FlexContainer key={input.id} role="none" >
+                            <FlexContainer key={input.id} role="none" $width={input.width}>
                                 <StyledLabel htmlFor={input.title}>
                                     {input.title}
                                 </StyledLabel>
@@ -104,6 +113,20 @@ function Input({ inputsArray }) {
                                     rows={10}
                                     required={input.required}>
                                 </StyledTextArea>
+                            </FlexContainer>
+                        );
+                    case "color":
+                        return (
+                            <FlexContainer key={input.id} role="none" $width={input.width} >
+                                <StyledLabel htmlFor={input.title}>
+                                    {input.title}
+                                </StyledLabel>
+
+                                <StyledColor
+                                    type={input.type}
+                                    name={input.title}
+                                    required={input.required}>
+                                </StyledColor>
                             </FlexContainer>
                         )
                     default:
