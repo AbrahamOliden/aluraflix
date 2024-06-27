@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../Button";
+import { StyledButton } from "../Button";
 import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
@@ -34,12 +34,12 @@ function Header() {
                 <ul>
                     <li>
                         <Link to="/">
-                            <Button $active={true} >Home</Button>
+                            <StyledButton $active={true} >Home</StyledButton>
                         </Link>
                     </li>
                     <li>
                         <Link to="/new-video" >
-                            <Button>New video</Button>
+                            <StyledButton>New video</StyledButton>
                         </Link>
                     </li>
                 </ul>

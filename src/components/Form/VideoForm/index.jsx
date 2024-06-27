@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledButton from "../../Button";
+import { StyledButton } from "../../Button";
 import Input from "../../InputField";
 
 const StyledField = styled.fieldset`
