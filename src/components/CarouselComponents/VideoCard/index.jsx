@@ -26,8 +26,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 `;
 
-function VideoCardSlider(props) {
-    const { title, path, image, description, category } = props;
+function VideoCardSlider({ title, image, description, category }) {
 
     const buttonColor = {
         "Front-end": "#6BD1FF",
