@@ -1,11 +1,15 @@
-import VideoContainer from "../VideosContainer"
+import VideoContainer from "../VideosContainer";
+import Carousel from "../CarouselComponents/Carousel";
+import data from "../CarouselComponents/slider-data.json"
 
 function Home() {
     return (
         <main id="home">
-            <VideoContainer text={"Front End"} color={"#6BD1FF"} />
-            <VideoContainer text={"Back End"} color={"#00C86F"} />
-            <VideoContainer text={"Innovation Management"} color={"#FFBA05"} />
+            {
+                data.categories.map(category => (
+                    <Carousel key={Object.keys(category)[0]} {...category} />
+                ))
+            }
         </main>
     );
 };
