@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import MySlider from "../Slider";
-import VideoCardSlider from "../Slider";
-import data from "../slider-data.json";
 
 const StyledContainer = styled.section`
      display: flex;
@@ -25,20 +23,6 @@ const StyledButton = styled.button`
     border-radius: 15px;
     cursor: pointer;
 `;
-
-// const StyledList = styled.ul`
-//     display: flex;
-//     flex-flow: row nowrap;
-//     justify-content: flex-start;
-//     align-items: center;
-//     padding: 0;
-//     margin: 0;
-//     gap: 40px;
-//     list-style: none;
-//     overflow-x: scroll;
-//     scrollbar-color: var(--blue) var(--black);
-//     scrollbar-width: 12px;
-// `;
 
 function Carousel(props) {
 
