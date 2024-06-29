@@ -29,7 +29,10 @@ const StyledHeader = styled.header`
 function Header() {
     return (
         <StyledHeader id="header" >
-            <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
+            <h1>
+                <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
+            </h1>
+            
             <nav>
                 <ul>
                     <li>
