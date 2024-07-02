@@ -2,19 +2,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoCardSlider from "../VideoCard";
-import styled from "styled-components";
-import data from "../slider-data.json";
-
-const StyledList = styled.ul`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    gap: 40px;
-    list-style: none;
-`;
 
 function MySlider(props) {
     const settings = {
