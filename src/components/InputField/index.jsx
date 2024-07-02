@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../../context/GlobalContext";
 
 const FlexContainer = styled.div`
     width: ${props => props.$width ? `${props.$width}` : "350px"};
@@ -56,9 +58,20 @@ const StyledColor = styled.input`
     border: 2px solid var(--blue);
     border-radius: 10px;
     box-sizing: content-box;
-`
+`;
 
 function Input({ inputsArray }) {
+
+    // const { categories } = useContext(GlobalContext); //!This dont exist at GlobalContext yet
+
+    const dropDownElements = () => {
+
+        return (
+            <StyledDropdown>
+
+            </StyledDropdown>
+        )
+    }
 
     const renderInput = input => {
 
