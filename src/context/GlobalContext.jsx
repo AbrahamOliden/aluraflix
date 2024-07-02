@@ -1,12 +1,11 @@
 import { createContext, useState, useEffect } from "react";
 
-const GlobalContext = createContext();
+export const GlobalContext = createContext();
 
 const GlobalContextProvider = ({ children }) => {
 
     const [videos, setVideos] = useState([]);
 
-    
     useEffect(() => {
         const getData = async () => {
             const resolve = await fetch("http://localhost:5000/categories");
@@ -14,14 +13,11 @@ const GlobalContextProvider = ({ children }) => {
             setVideos([...data]);
         };
 
-        setTimeout(() => {
-            getData();
-            console.log(videos);
-        });
+        getData();
     }, []);
 
     return (
-        <GlobalContext.Provider value={videos} >
+        <GlobalContext.Provider value={{videos, setVideos}} >
             {children}
         </GlobalContext.Provider>
     );
