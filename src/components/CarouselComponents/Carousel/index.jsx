@@ -26,20 +26,13 @@ const StyledButton = styled.button`
 
 function Carousel(props) {
 
-    const buttonColor = {
-        "Front-end": "#6BD1FF",
-        "Back-end": "#00C86F",
-        "Innovation-management": "#FFBA05"
-    };
-
-    const data = (Object.values(props));
-    const color = buttonColor[Object.keys(props)]
+    const { title, color, videos } = props
 
     return (
 
-        data.map(category => ( //? change to {}
-                <StyledContainer key={Object.keys(category)[0]}>
-                    <StyledButton $color={color} >{Object.keys(props)[0]}</StyledButton>
+        videos.map(category => ( //? change to {}
+                <StyledContainer key={title}>
+                    <StyledButton $color={color} >{title}</StyledButton>
                     <MySlider {...category} color={color} />
                 </StyledContainer>
             )
