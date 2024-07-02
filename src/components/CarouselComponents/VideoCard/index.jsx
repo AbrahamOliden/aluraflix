@@ -1,28 +1,5 @@
 import styled from "styled-components";
 
-// const StyledFigure = styled.figure`
-//     display: flex;
-//     flex-flow: column nowrap;
-// `;
-
-// const StyledCaption = styled.figcaption`
-//     flex: 1;
-// `;
-
-// const StyledButton = styled.button`
-//     min-width: 420px;
-//     background-color: ${props => props.$color};
-//     color: var(--white);
-//     font-size: 2rem;
-//     font-weight: 700;
-//     text-align: center;
-//     text-transform: uppercase;
-//     padding: 20px;
-//     border: none;
-//     border-radius: 15px;
-//     cursor: pointer;
-// `;
-
 const StyledFigure = styled.figure`
     width: 25vw;
     margin: 0;
