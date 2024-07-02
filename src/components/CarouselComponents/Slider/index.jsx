@@ -4,6 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import VideoCardSlider from "../VideoCard";
 
 function MySlider(props) {
+
+    const { id } = props;
+    // console.log(props);
     const settings = {
         dots: true,
         infinite: true,
@@ -35,15 +38,15 @@ function MySlider(props) {
         ]
     };
 
-    const data = Object.values(props).filter(item => typeof (item) === "object");
+    // const data = Object.values(props).filter(item => typeof (item) === "object");
 
     return (
         <div className="slider-container" style={{ maxWidth: "100%" }} >
             <Slider {...settings} >
                 {
-                    data.map(video => {
-                        return <VideoCardSlider key={video.id} color={props.color} {...video} />
-                    })
+                    // video.map(video => {
+                        // return <VideoCardSlider key={id} {...video} />
+                    // })
                 }
             </Slider>
         </div>
