@@ -1,16 +1,22 @@
-import VideoContainer from "../VideosContainer";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalContext";
 import Carousel from "../CarouselComponents/Carousel";
-import data from "../CarouselComponents/slider-data.json"
 
 function Home() {
+    const { videos } = useContext(GlobalContext);
+    console.log(videos);
+
     return (
+
+
         <main id="home">
             {
-                data.categories.map(category => (
+                videos.map(category => (
                     <Carousel key={Object.keys(category)[0]} {...category} />
                 ))
             }
         </main>
+
     );
 };
 
