@@ -24,19 +24,14 @@ const StyledButton = styled.button`
     cursor: pointer;
 `;
 
-function Carousel(props) {
-
-    const { title, color, videos } = props
+function Carousel({ title, color, videos }) {
 
     return (
-
-        videos.map(category => ( //? change to {}
-                <StyledContainer key={title}>
-                    <StyledButton $color={color} >{title}</StyledButton>
-                    <MySlider {...category} color={color} />
-                </StyledContainer>
-            )
-        ))
+        <StyledContainer >
+            <StyledButton $color={color} >{title}</StyledButton>
+            <MySlider color={color} videos={videos} />
+        </StyledContainer>
+    )
 };
 
 export default Carousel;
