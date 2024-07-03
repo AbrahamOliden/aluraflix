@@ -30,6 +30,10 @@ const StyledCaption = styled.figcaption`
     border-radius: 0 0 15px 15px;
     box-sizing: border-box;
     button {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        width: 100%;
         font-size: 1rem;
         font-weight: 400;
         background-color: transparent;
@@ -37,7 +41,6 @@ const StyledCaption = styled.figcaption`
         border: none;
         img {
             width: 1rem;
-            margin-right: 1rem;
             border: none;
         }
     }
