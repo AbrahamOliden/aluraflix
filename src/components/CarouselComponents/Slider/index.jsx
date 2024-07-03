@@ -3,10 +3,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoCardSlider from "../VideoCard";
 
-function MySlider(props) {
+function MySlider({ videos, color }) {
 
-    const { id } = props;
-    // console.log(props);
+    // const { videos, color } = props;
+    // console.log(videos);
     const settings = {
         dots: true,
         infinite: true,
@@ -38,15 +38,13 @@ function MySlider(props) {
         ]
     };
 
-    // const data = Object.values(props).filter(item => typeof (item) === "object");
-
     return (
         <div className="slider-container" style={{ maxWidth: "100%" }} >
             <Slider {...settings} >
                 {
-                    // video.map(video => {
-                        // return <VideoCardSlider key={id} {...video} />
-                    // })
+                    videos.map(video => {
+                        return <VideoCardSlider key={video.id} color={color} {...video} />
+                    })
                 }
             </Slider>
         </div>
