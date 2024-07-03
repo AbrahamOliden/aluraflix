@@ -1,12 +1,9 @@
 import styled from "styled-components";
 
 const StyledFigure = styled.figure`
-    width: 25vw;
-    margin: 0;
     display: flex;
     flex-flow: column nowrap;
     gap: 0;
-    margin-bottom: 20px;
     &>div {
         box-shadow: inset 0 0 20px 5px ${props => props.$color};
         border-radius: 15px 15px 0 0;
