@@ -1,7 +1,5 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import CategoryForm from "./CategoryForm";
-import VideoForm from "./VideoForm";
 import Input from "../InputField";
 import { ButtonContainer, StyledButton } from "../Button";
 
@@ -78,13 +76,25 @@ function Form() {
     return (
         <form>
             <StyledField>
-                {
-                    location === "new-video"
-                        ? <Input arrayOfInputs={videoFormInputs} />
-                        : location === "new-category"
-                            ? <Input arrayOfInputs={categoryFormInputs} />
-                            : null
-                }
+                <Input arrayOfInputs={location === "/new-video" ? videoFormInputs : categoryFormInputs} />
+                <ButtonContainer role="none" id="button-container">
+                    <div role="none" >
+                        <StyledButton type="submit" >Submit</StyledButton>
+                        <StyledButton>Clear</StyledButton>
+                    </div>
+
+                    {location === "/new-video" && (
+                        <Link to="/new-category" >
+                            <StyledButton>New Category</StyledButton>
+                        </Link>
+                    )}
+
+                    {location === "/new-category" && (
+                        <Link to="/new-video" >
+                            <StyledButton>New Video</StyledButton>
+                        </Link>
+                    )}
+                </ButtonContainer>
             </StyledField>
         </form>
     )
