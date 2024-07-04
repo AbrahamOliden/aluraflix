@@ -76,7 +76,13 @@ function Form() {
     return (
         <form>
             <StyledField>
-                <Input arrayOfInputs={location === "/new-video" ? videoFormInputs : categoryFormInputs} />
+                <Input arrayOfInputs={location === "/new-video" 
+                        ? videoFormInputs 
+                        : categoryFormInputs}
+                    widthOfInputs={location === "/new-category"
+                        ? "100%"
+                        : null
+                    } />
                 <ButtonContainer role="none" id="button-container">
                     <div role="none" >
                         <StyledButton type="submit" >Submit</StyledButton>
