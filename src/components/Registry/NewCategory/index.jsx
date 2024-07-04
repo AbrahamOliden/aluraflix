@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CategoryForm from "../../Form/CategoryForm";
+import Form from "../../Form";
 
 
 const StyledSection = styled.section`
