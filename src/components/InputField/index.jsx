@@ -60,7 +60,7 @@ const StyledColor = styled.input`
     box-sizing: content-box;
 `;
 
-function Input({ arrayOfInputs }) {
+function Input({ arrayOfInputs, widthOfInputs }) {
 
     // const { categories } = useContext(GlobalContext); //!This dont exist at GlobalContext yet
 
@@ -91,7 +91,10 @@ function Input({ arrayOfInputs }) {
         };
 
         return (
-            <FlexContainer key={input.id} role="none" $width={input.width || null} >
+            <FlexContainer key={input.id} role="none" $width={
+                InputComponent.target === "textarea" //This is so Description input is always 100% width
+                    ? "100%"
+                    : widthOfInputs } >
                 <StyledLabel htmlFor={input.title} >
                     {input.title}
                 </StyledLabel>
