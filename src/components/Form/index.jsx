@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import CategoryForm from "./CategoryForm";
 import VideoForm from "./VideoForm";
@@ -10,3 +11,18 @@ const StyledField = styled.fieldset`
     gap: 60px 30px;
     border: none;
 `;
+
+function Form() {
+
+    const location = useLocation();
+
+    return (
+        <form>
+            <StyledField>
+
+            </StyledField>
+        </form>
+    )
+}
+
+export default Form
