@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CategoryForm from "../../Form/CategoryForm";
 import Form from "../../Form";
 
 
@@ -16,7 +15,7 @@ function NewCategory() {
         <StyledSection>
             <h1>New Category</h1>
             <p>Fill the form to create a new category</p>
-            <CategoryForm/>
+            <Form />
         </StyledSection>
     );
 };
