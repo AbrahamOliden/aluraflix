@@ -8,7 +8,7 @@ const GlobalContextProvider = ({ children }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const resolve = await fetch("http://localhost:5000/categories");
+            const resolve = await fetch("https://my-json-server.typicode.com/AbrahamOliden/aluraflix-api/categories");
             const data = await resolve.json();
             setCategories([...data]);
         };
