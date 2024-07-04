@@ -30,9 +30,11 @@ function Header() {
     return (
         <StyledHeader id="header" >
             <h1>
-                <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
+                <Link to="/" >
+                    <img src="/aluraflix-logo.svg" alt="Aluraflix logo" />
+                </Link>
             </h1>
-            
+
             <nav>
                 <ul>
                     <li>
