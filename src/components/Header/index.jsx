@@ -12,6 +12,7 @@ const StyledHeader = styled.header`
     background-color: var(--black);
     border-bottom: 4px solid var(--blue);
     box-shadow: 0px 25px 29px -29px rgba(34, 113, 209, 0.7);
+    z-index: 1;
     img{
         width: 170px;
         scale: 1;
