@@ -25,6 +25,6 @@ export const StyledButton = styled.button`
     border-radius: 10px;
     background-color: inherit;
     color: ${props => props.$active 
-        ? "var(--blue)" : "inherit"} ;
+        ? "var(--blue)" : "var(--white)"} ;
     cursor: pointer;
 `;
