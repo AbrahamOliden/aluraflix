@@ -16,8 +16,62 @@ function Form() {
 
     const location = useLocation();
 
-    const videoFormInputs = [];
-    const categoryFormInputs = [];
+    const videoFormInputs = [
+        {
+            title: "title",
+            type: "text",
+            required: true,
+            id: 0
+        },
+        {
+            title: "category",
+            type: "select",
+            required: true,
+            id: 1
+        },
+        {
+            title: "image",
+            type: "text",
+            required: true,
+            id: 2
+        },
+        {
+            title: "video",
+            type: "text",
+            required: true,
+            id: 3
+        },
+        {
+            title: "description",
+            type: "textarea",
+            required: false,
+            id: 4,
+            width: "100%"
+        }
+    ];
+    const categoryFormInputs = [
+        {
+            title: "name",
+            type: "text",
+            required: true,
+            id: 0,
+            width: "100%"
+        },
+        {
+            title: "color",
+            type: "color",
+            required: true,
+            id: 1,
+            width: "100%"
+        },
+        {
+            title: "description",
+            type: "textarea",
+            required: false,
+            id: 2,
+            width: "100%"
+        }
+    ];
 
     return (
         <form>
