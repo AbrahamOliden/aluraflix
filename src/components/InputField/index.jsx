@@ -60,7 +60,7 @@ const StyledColor = styled.input`
     box-sizing: content-box;
 `;
 
-function Input({ inputsArray }) {
+function Input({ arrayOfInputs }) {
 
     // const { categories } = useContext(GlobalContext); //!This dont exist at GlobalContext yet
 
@@ -108,7 +108,7 @@ function Input({ inputsArray }) {
 
     return (
         <>
-            {inputsArray.map(renderInput)}
+            {arrayOfInputs.map(renderInput)}
         </>
     );
 };
