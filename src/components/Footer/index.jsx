@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
@@ -15,7 +16,9 @@ const StyledFooter = styled.footer`
 function Footer() {
   return (
     <StyledFooter>
+      <Link to="/" >
         <img src="aluraflix-logo.svg" alt="Aluraflix Logo" />
+      </Link>
     </StyledFooter>
   );
 };
