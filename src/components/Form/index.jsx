@@ -2,6 +2,8 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import CategoryForm from "./CategoryForm";
 import VideoForm from "./VideoForm";
+import Input from "../InputField";
+import { ButtonContainer, StyledButton } from "../Button";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -78,9 +80,9 @@ function Form() {
             <StyledField>
                 {
                     location === "new-video"
-                        ? <VideoForm />
+                        ? <Input arrayOfInputs={videoFormInputs} />
                         : location === "new-category"
-                            ? <CategoryForm />
+                            ? <Input arrayOfInputs={categoryFormInputs} />
                             : null
                 }
             </StyledField>
