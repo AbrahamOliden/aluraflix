@@ -14,7 +14,7 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const location = useLocation();
+    const location = useLocation().pathname;
 
     const videoFormInputs = [
         {
