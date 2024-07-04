@@ -16,10 +16,19 @@ function Form() {
 
     const location = useLocation();
 
+    const videoFormInputs = [];
+    const categoryFormInputs = [];
+
     return (
         <form>
             <StyledField>
-
+                {
+                    location === "new-video"
+                        ? <VideoForm />
+                        : location === "new-category"
+                            ? <CategoryForm />
+                            : null
+                }
             </StyledField>
         </form>
     )
