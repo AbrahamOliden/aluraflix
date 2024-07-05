@@ -1,4 +1,4 @@
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../InputField";
 import { ButtonContainer, StyledButton } from "../Button";
@@ -86,15 +86,15 @@ function Form() {
                     </div>
 
                     {location === "/new-video" && (
-                        <NavLink to="/new-category" >
+                        <Link to="/new-category" >
                             <StyledButton>New Category</StyledButton>
-                        </NavLink>
+                        </Link>
                     )}
 
                     {location === "/new-category" && (
-                        <NavLink to="/new-video" >
+                        <Link to="/new-video" >
                             <StyledButton>New Video</StyledButton>
-                        </NavLink>
+                        </Link>
                     )}
                 </ButtonContainer>
             </StyledField>
