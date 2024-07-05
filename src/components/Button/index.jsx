@@ -27,14 +27,21 @@ export const StyledButton = styled.button`
     color: ${props => props.$active 
         ? "var(--blue)" : "var(--white)"} ;
     cursor: pointer;
-    transition: all 0.5s ease;
-    &:active {
+    transition: transform 0.5s ease;
+    &:hover {
+        background-color: rgba(34, 113, 209, 0.7);
+        border-color: rgba(34, 113, 209, 0.7);
+        color: var(--white);
+    }
+    &:focus {
         color: var(--blue);
         border-color: var(--blue);
-    };
-    &:focus {
         transform: scale(1.1);
         outline: none;
         box-shadow: 0 0 0 5px rgba(34, 113, 209, 0.7);
+    }
+    &:active {
+        color: var(--black);
+        background-color: var(--blue);
     }
 `;
