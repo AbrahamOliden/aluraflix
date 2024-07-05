@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { StyledButton } from "../Button";
 import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 
 const StyledHeader = styled.header`
     display: flex;
