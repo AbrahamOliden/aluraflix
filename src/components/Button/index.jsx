@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const ButtonContainer =  styled.div`
     display: flex;
@@ -27,4 +28,18 @@ export const StyledButton = styled.button`
     color: ${props => props.$active 
         ? "var(--blue)" : "var(--white)"} ;
     cursor: pointer;
+`;
+
+export const StyledLink = styled(NavLink)`
+    width: fit-content;
+    height: fit-content;
+    transition: all 0.5s ease;
+    :active {
+        color: var(--blue);
+    };
+    :focus {
+        transform: scale(1.1);
+        outline: none;
+        box-shadow: 0 0 0 5px rgba(34, 113, 209, 0.7);
+    }
 `;
