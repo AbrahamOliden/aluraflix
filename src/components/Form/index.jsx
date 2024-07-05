@@ -45,8 +45,7 @@ function Form() {
             title: "description",
             type: "textarea",
             required: false,
-            id: 4,
-            width: "100%"
+            id: 4
         }
     ];
     const categoryFormInputs = [
@@ -54,22 +53,19 @@ function Form() {
             title: "name",
             type: "text",
             required: true,
-            id: 0,
-            width: "100%"
+            id: 0
         },
         {
             title: "color",
             type: "color",
             required: true,
-            id: 1,
-            width: "100%"
+            id: 1
         },
         {
             title: "description",
             type: "textarea",
             required: false,
-            id: 2,
-            width: "100%"
+            id: 2
         }
     ];
 
