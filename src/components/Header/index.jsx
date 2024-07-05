@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { StyledButton } from "../Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const StyledHeader = styled.header`
     display: flex;
@@ -28,6 +29,9 @@ const StyledHeader = styled.header`
 `;
 
 function Header() {
+
+    const location = useLocation().pathname;
+
     return (
         <StyledHeader id="header" >
             <h1>
@@ -40,12 +44,12 @@ function Header() {
                 <ul>
                     <li>
                         <Link to="/">
-                            <StyledButton $active={true} >Home</StyledButton>
+                            <StyledButton $active={location === "/"} >Home</StyledButton>
                         </Link>
                     </li>
                     <li>
                         <Link to="/new-video" >
-                            <StyledButton>New video</StyledButton>
+                            <StyledButton $active={location === "/new-video"} >New video</StyledButton>
                         </Link>
                     </li>
                 </ul>
