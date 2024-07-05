@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../InputField";
-import { ButtonContainer, StyledButton } from "../Button";
+import { ButtonContainer, StyledButton, StyledLink } from "../Button";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -90,15 +90,15 @@ function Form() {
                     </div>
 
                     {location === "/new-video" && (
-                        <Link to="/new-category" >
+                        <StyledLink to="/new-category" >
                             <StyledButton>New Category</StyledButton>
-                        </Link>
+                        </StyledLink>
                     )}
 
                     {location === "/new-category" && (
-                        <Link to="/new-video" >
+                        <StyledLink to="/new-video" >
                             <StyledButton>New Video</StyledButton>
-                        </Link>
+                        </StyledLink>
                     )}
                 </ButtonContainer>
             </StyledField>
