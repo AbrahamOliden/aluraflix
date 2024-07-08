@@ -9,9 +9,10 @@ const StyledContainer = styled.section`
      gap: 40px;
 `;
 
-const StyledButton = styled.button`
+const StyledHeading = styled.h4`
     min-width: fit-content;
     width: 350px;
+    margin-left: 40px;
     background-color: ${props => props.$color};
     color: var(--white);
     font-size: 1.5rem;
@@ -21,14 +22,13 @@ const StyledButton = styled.button`
     padding: 20px;
     border: none;
     border-radius: 15px;
-    cursor: pointer;
 `;
 
 function Carousel({ title, color, videos }) {
 
     return (
         <StyledContainer >
-            <StyledButton $color={color} >{title}</StyledButton>
+            <StyledHeading $color={color} >{title}</StyledHeading>
             <MySlider color={color} videos={videos} />
         </StyledContainer>
     )
