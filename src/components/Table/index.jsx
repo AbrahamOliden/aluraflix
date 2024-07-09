@@ -96,10 +96,10 @@ function Table() {
                             <CategoryTitle scope="row" >{category.title}</CategoryTitle>
                             <CategoryDescription>{category.description}</CategoryDescription>
                             <td>
-                                <TableButton>Edit</TableButton>
+                                <TableButton type="button" >Edit</TableButton>
                             </td>
                             <td>
-                                <TableButton>Delete</TableButton>
+                                <TableButton type="button" >Delete</TableButton>
                             </td>
                         </tr>
                     ))
