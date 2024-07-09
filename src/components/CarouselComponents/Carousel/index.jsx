@@ -12,7 +12,7 @@ const StyledContainer = styled.section`
 const StyledHeading = styled.h4`
     min-width: fit-content;
     width: 350px;
-    margin-left: 40px;
+    margin: 40px auto 0 40px;
     background-color: ${props => props.$color};
     color: var(--white);
     font-size: 1.5rem;
