@@ -12,10 +12,12 @@ const StyledTable = styled.table`
 `;
 
 const StyledTableHead = styled.thead`
+    border: 4px solid var(--blue);
     font-size: 1.4rem;
     font-weight: 500;
     tr {
         th {
+            border: 4px solid var(--blue);
             padding: 12px 20px;
         };
         #name {
@@ -30,12 +32,18 @@ const StyledTableHead = styled.thead`
     };
 `;
 
+const StyledTableBody = styled.tbody`
+    CategoryTitle, CategoryDescription, tr, td {
+        border: 1px solid var(--white);
+    }
+`;
+
 const CategoryTitle = styled.th`
     font-size: 1.2rem;
     font-weight: 600;
     text-align: left;
     padding: 12px 20px;
-`
+`;
 
 const CategoryDescription = styled.td`
     font-size: 1.1rem;
@@ -80,7 +88,7 @@ function Table() {
     const { categories } = useContext(GlobalContext);
 
     return (
-        <StyledTable align="center" border="1" >
+        <StyledTable  >
             <StyledTableHead>
                 <tr>
                     <th scope="col" id="name" >Name</th>
@@ -89,13 +97,13 @@ function Table() {
                     <th scope="col" id="delete" >Delete</th>
                 </tr>
             </StyledTableHead>
-            <tbody>
+            <StyledTableBody>
                 {
                     categories.map(category => (
                         <tr key={category.title} >
                             <CategoryTitle scope="row" >{category.title}</CategoryTitle>
                             <CategoryDescription>{category.description}</CategoryDescription>
-                            <td>
+                            <td >
                                 <TableButton type="button" >Edit</TableButton>
                             </td>
                             <td>
@@ -104,7 +112,7 @@ function Table() {
                         </tr>
                     ))
                 }
-            </tbody>
+            </StyledTableBody>
         </StyledTable>
     );
 };
