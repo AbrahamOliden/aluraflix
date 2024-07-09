@@ -62,23 +62,25 @@ const StyledColor = styled.input`
 
 function Input({ arrayOfInputs, widthOfInputs }) {
 
-    // const { categories } = useContext(GlobalContext); //!This dont exist at GlobalContext yet
+    const { categories } = useContext(GlobalContext);
 
-    const dropDownElements = () => {
-
-        return (
-            <StyledDropdown>
-
-            </StyledDropdown>
-        )
-    }
+    const dropDownElements = () => ( //* function for rendering all category options
+        <StyledDropdown>
+            <option value="" style={{display: "none"}} >Choose an option</option>
+            {
+                categories.map(category => (
+                    <option key={category.title} value={category.title} >{category.title}</option>
+                ))
+            }
+        </StyledDropdown>
+    )
 
     const renderInput = input => {
 
         const InputComponent = input.type === "text"
             ? StyledText
             : input.type === "select"
-                ? StyledDropdown
+                ? dropDownElements
                 : input.type === "textarea"
                     ? StyledTextArea
                     : input.type === "color"
@@ -94,12 +96,12 @@ function Input({ arrayOfInputs, widthOfInputs }) {
             <FlexContainer key={input.id} role="none" $width={
                 InputComponent.target === "textarea" //This is so Description input is always 100% width
                     ? "100%"
-                    : widthOfInputs } >
+                    : widthOfInputs} >
                 <StyledLabel htmlFor={input.title} >
                     {input.title}
                 </StyledLabel>
 
-                <InputComponent 
+                <InputComponent
                     type={input.type}
                     name={input.title}
                     placeholder={`Introduce ${input.title}`}
