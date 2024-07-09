@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../InputField";
 import { ButtonContainer, StyledButton } from "../Button";
+import Table from "../Table";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -79,11 +80,16 @@ function Form() {
                         ? "100%"
                         : null
                     } />
+
+                {location === "/new-category" && (
+                    <Table />
+                )}
                 <ButtonContainer role="none" id="button-container">
                     <div role="none" >
                         <StyledButton type="submit" >Submit</StyledButton>
                         <StyledButton>Clear</StyledButton>
                     </div>
+
 
                     {location === "/new-video" && (
                         <Link to="/new-category" >
