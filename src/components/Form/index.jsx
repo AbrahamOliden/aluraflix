@@ -87,7 +87,7 @@ function Form() {
                 <ButtonContainer role="none" id="button-container">
                     <div role="none" >
                         <StyledButton type="submit" >Submit</StyledButton>
-                        <StyledButton>Clear</StyledButton>
+                        <StyledButton type="reset" >Clear</StyledButton>
                     </div>
 
 
