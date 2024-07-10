@@ -85,7 +85,8 @@ const TableButton = styled.button`
 
 
 function Table() {
-    const { categories } = useContext(GlobalContext);
+    const { state } = useContext(GlobalContext);
+    const { categories } = state;
 
     return (
         <StyledTable  >
