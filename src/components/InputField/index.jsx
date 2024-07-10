@@ -62,7 +62,7 @@ const StyledColor = styled.input`
 
 function Input({ arrayOfInputs, widthOfInputs }) {
 
-    const { categories } = useContext(GlobalContext);
+    const { categories, formData, setFormData } = useContext(GlobalContext);
 
     const dropDownElements = () => ( //* function for rendering all category options
         <StyledDropdown>
@@ -75,19 +75,18 @@ function Input({ arrayOfInputs, widthOfInputs }) {
         </StyledDropdown>
     )
 
-    const renderInput = input => {
+    const renderInput = input => { //* Constant that functions as argument to map arrayOfInputs, returns a container and determines the type of input, as well as styling based on properties
 
-        const InputComponent = input.type === "text"
-            ? StyledText
-            : input.type === "select"
-                ? dropDownElements
-                : input.type === "textarea"
-                    ? StyledTextArea
-                    : input.type === "color"
-                        ? StyledColor
-                        : null;
+        const inputTypes = {
+            text: StyledText,
+            textarea: StyledTextArea,
+            color: StyledColor,
+            select: dropDownElements
+        }
 
-        if (!InputComponent) {
+        const InputComponent = inputTypes[input.type] || null;
+
+        if (!InputComponent) { //*Error handling in case of some mistake
             console.log(`Input type not supported: ${input.type}`);
             return null;
         };
