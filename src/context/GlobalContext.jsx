@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 
 export const GlobalContext = createContext();
 
@@ -17,9 +17,11 @@ const reducer = (state, action) => {
         case "SET_NEW_CATEGORY":
             return {...state, newCategory: action.payload};
     };
-}
+};
 
 const GlobalContextProvider = ({ children }) => {
+
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({});
@@ -30,14 +32,15 @@ const GlobalContextProvider = ({ children }) => {
         const getData = async () => {
             const resolve = await fetch("https://my-json-server.typicode.com/AbrahamOliden/aluraflix-api/categories");
             const data = await resolve.json();
-            setCategories([...data]);
+            // setCategories([...data]);
+            dispatch({type: "SET_CATEGORIES", payload: data});
         };
 
         getData();
     }, []);
 
     return (
-        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory}} >
+        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory, state, dispatch}} >
             {children}
         </GlobalContext.Provider>
     );
