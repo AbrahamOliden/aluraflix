@@ -4,7 +4,8 @@ import Carousel from "../CarouselComponents/Carousel";
 import Banner from "../Banner";
 
 function Home() {
-    const { categories } = useContext(GlobalContext);
+    const { state } = useContext(GlobalContext);
+    const { categories } = state;
 
     return (
         <>
