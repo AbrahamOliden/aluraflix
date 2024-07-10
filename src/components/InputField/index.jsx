@@ -62,10 +62,12 @@ const StyledColor = styled.input`
 
 function Input({ arrayOfInputs, widthOfInputs }) {
     
-    const { categories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
+    const { formData, state } = useContext(GlobalContext);
+    const { categories } =  state;
     const handleChange = e => {
         const { name, value} = e.target;
-        setFormData(prevData => ({...prevData, [name]: value}));
+        console.log(e.target);
+        // setFormData(prevData => ({...prevData, [name]: value}));
     };
 
 
@@ -109,7 +111,7 @@ function Input({ arrayOfInputs, widthOfInputs }) {
                     type={input.type}
                     name={input.title}
                     placeholder={`Introduce ${input.title}`}
-                    required={input.required}
+                    required={!(input.title === "description")} //* Only description is optional
                     onChange={handleChange}
                 />
             </FlexContainer>
