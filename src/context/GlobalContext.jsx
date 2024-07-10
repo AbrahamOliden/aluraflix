@@ -5,6 +5,7 @@ export const GlobalContext = createContext();
 const GlobalContextProvider = ({ children }) => {
 
     const [categories, setCategories] = useState([]);
+    const [formData, setFormData] = useState({});
 
     useEffect(() => {
         const getData = async () => {
@@ -17,7 +18,7 @@ const GlobalContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <GlobalContext.Provider value={{categories, setCategories}} >
+        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData}} >
             {children}
         </GlobalContext.Provider>
     );
