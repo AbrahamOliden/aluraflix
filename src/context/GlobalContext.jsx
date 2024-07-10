@@ -6,6 +6,8 @@ const GlobalContextProvider = ({ children }) => {
 
     const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({});
+    const [newVideo, setNewVideo] = useState({});
+    const [newCategory, setNewCategory] = useState({})
 
     useEffect(() => {
         const getData = async () => {
@@ -18,7 +20,7 @@ const GlobalContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData}} >
+        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory}} >
             {children}
         </GlobalContext.Provider>
     );
