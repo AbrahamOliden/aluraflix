@@ -61,12 +61,17 @@ const StyledColor = styled.input`
 `;
 
 function Input({ arrayOfInputs, widthOfInputs }) {
+    
+    const { categories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
+    const handleChange = e => {
+        const { name, value} = e.target;
+        setFormData(prevData => ({...prevData, [name]: value}));
+    };
 
-    const { categories, formData, setFormData } = useContext(GlobalContext);
 
-    const dropDownElements = () => ( //* function for rendering all category options
+    const dropDownElements = () => ( //* function for rendering all category options at dropdown (select) element
         <StyledDropdown>
-            <option value="" style={{display: "none"}} >Choose an option</option>
+            <option value="" style={{ display: "none" }} >Choose an option</option>
             {
                 categories.map(category => (
                     <option key={category.title} value={category.title} >{category.title}</option>
@@ -105,6 +110,7 @@ function Input({ arrayOfInputs, widthOfInputs }) {
                     name={input.title}
                     placeholder={`Introduce ${input.title}`}
                     required={input.required}
+                    onChange={handleChange}
                 />
             </FlexContainer>
         )
