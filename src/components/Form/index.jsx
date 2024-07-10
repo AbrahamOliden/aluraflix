@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components";
 import Input from "../InputField";
 import { ButtonContainer, StyledButton } from "../Button";
@@ -14,6 +16,20 @@ const StyledField = styled.fieldset`
 `;
 
 function Form() {
+
+    const { formData, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
+
+    const handleSubmitCategory = e => {
+        e.preventDefault();
+        console.log(e.target);
+        console.log(formData, "category!");
+    };
+
+    const handleSubmitVideo = e => {
+        e.preventDefault();
+        console.log(e.target);
+        console.log(formData, "video!");
+    }
 
     const location = useLocation().pathname;
 
@@ -71,7 +87,7 @@ function Form() {
     ];
 
     return (
-        <form>
+        <form onSubmit={ location === "new-video" ? handleSubmitVideo : handleSubmitCategory } >
             <StyledField>
                 <Input arrayOfInputs={location === "/new-video" 
                         ? videoFormInputs 
