@@ -64,9 +64,10 @@ function Input({ arrayOfInputs, widthOfInputs }) {
     
     const { formData, state } = useContext(GlobalContext);
     const { categories } =  state;
-    const handleChange = e => {
+
+    const handleChange = e => { 
         const { name, value} = e.target;
-        console.log(e.target);
+        // console.log(name, value);
         // setFormData(prevData => ({...prevData, [name]: value}));
     };
 
@@ -110,7 +111,11 @@ function Input({ arrayOfInputs, widthOfInputs }) {
                 <InputComponent
                     type={input.type}
                     name={input.title}
-                    placeholder={`Introduce ${input.title}`}
+                    placeholder={
+                        input.title === "image" || input.title === "video"
+                            ? `Introduce link to ${input.title}`
+                            : `Introduce ${input.title}`
+                    }
                     required={!(input.title === "description")} //* Only description is optional
                     onChange={handleChange}
                 />
