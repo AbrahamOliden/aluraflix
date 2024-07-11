@@ -7,6 +7,10 @@ const StyledContainer = styled.section`
      justify-content: flex-start;
      padding: 40px;
      gap: 40px;
+     &>.empty-videos-description {
+        font-size: 1.8rem;
+        font-weight: 600;
+     }
 `;
 
 const StyledHeading = styled.h4`
@@ -26,12 +30,21 @@ const StyledHeading = styled.h4`
 
 function Carousel({ title, color, videos }) {
 
-    return (
-        <StyledContainer >
-            <StyledHeading $color={color} >{title}</StyledHeading>
-            <MySlider color={color} videos={videos} />
-        </StyledContainer>
-    )
+    if (videos.length > 0) {
+        return (
+            <StyledContainer >
+                <StyledHeading $color={color} >{title}</StyledHeading>
+                <MySlider color={color} videos={videos} />
+            </StyledContainer>
+        )
+    } else {
+        return (
+            <StyledContainer >
+                <StyledHeading $color={color} >{title}</StyledHeading>
+                <p className="empty-videos-description">There aren't any videos in this category yet</p>
+            </StyledContainer>
+        )
+    };
 };
 
 export default Carousel;
