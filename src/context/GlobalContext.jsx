@@ -12,10 +12,11 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "SET_CATEGORIES":
             return {...state, categories: action.payload};
-        case "SET_NEW_VIDEO":
+        case "SET_NEW_VIDEO": //! This doesnt work yet
             return {...state, newVideo: action.payload};
         case "SET_NEW_CATEGORY":
-            return {...state, newCategory: action.payload};
+            const updatedCategories = [...state.categories, {...action.payload, videos: [] }];
+            return {...state, categories:  updatedCategories};
     };
 };
 
@@ -23,10 +24,7 @@ const GlobalContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({});
-    const [newVideo, setNewVideo] = useState({});
-    const [newCategory, setNewCategory] = useState({})
 
     useEffect(() => {
         const getData = async () => {
@@ -40,7 +38,7 @@ const GlobalContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <GlobalContext.Provider value={{categories, setCategories, formData, setFormData, newVideo, setNewVideo, newCategory, setNewCategory, state, dispatch}} >
+        <GlobalContext.Provider value={{ formData, setFormData, state, dispatch}} >
             {children}
         </GlobalContext.Provider>
     );
