@@ -17,13 +17,15 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const { formData, state, dispatch } = useContext(GlobalContext);
+    const { formData, setFormData, state, dispatch } = useContext(GlobalContext);
     const location = useLocation().pathname;
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(e.target);
-        console.log(formData, "category!");
+        location === "new-video"
+            ? dispatch({type: "SET_NEW_VIDEO", payload: formData})
+            : dispatch({type: "SET_NEW_CATEGORY", payload: formData});
+        // setFormData({});
     };
 
 
@@ -56,7 +58,7 @@ function Form() {
     ];
     const categoryFormInputs = [
         {
-            title: "name",
+            title: "title",
             type: "text",
             id: 0
         },
@@ -80,8 +82,9 @@ function Form() {
                         : categoryFormInputs}
                     widthOfInputs={location === "/new-category"
                         ? "100%"
-                        : null
-                    } />
+                        : null}
+                    location={location}
+                />
 
                 {location === "/new-category" && (
                     <Table />
