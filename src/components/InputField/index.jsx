@@ -60,15 +60,14 @@ const StyledColor = styled.input`
     box-sizing: content-box;
 `;
 
-function Input({ arrayOfInputs, widthOfInputs }) {
+function Input({ arrayOfInputs, widthOfInputs, location }) {
     
-    const { formData, state } = useContext(GlobalContext);
+    const { setFormData, state } = useContext(GlobalContext);
     const { categories } =  state;
 
     const handleChange = e => { 
         const { name, value} = e.target;
-        // console.log(name, value);
-        // setFormData(prevData => ({...prevData, [name]: value}));
+        setFormData(prevData => ({...prevData, [name]: value}))
     };
 
 
