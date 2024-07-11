@@ -17,51 +17,40 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const { formData, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
+    const { formData, state, dispatch } = useContext(GlobalContext);
+    const location = useLocation().pathname;
 
-    const handleSubmitCategory = e => {
+    const handleSubmit = e => {
         e.preventDefault();
         console.log(e.target);
         console.log(formData, "category!");
     };
 
-    const handleSubmitVideo = e => {
-        e.preventDefault();
-        console.log(e.target);
-        console.log(formData, "video!");
-    }
-
-    const location = useLocation().pathname;
 
     const videoFormInputs = [
         {
             title: "title",
             type: "text",
-            required: true,
             id: 0
         },
         {
             title: "category",
             type: "select",
-            required: true,
             id: 1
         },
         {
             title: "image",
             type: "text",
-            required: true,
             id: 2
         },
         {
             title: "video",
             type: "text",
-            required: true,
             id: 3
         },
         {
             title: "description",
             type: "textarea",
-            required: false,
             id: 4
         }
     ];
@@ -69,25 +58,22 @@ function Form() {
         {
             title: "name",
             type: "text",
-            required: true,
             id: 0
         },
         {
             title: "color",
             type: "color",
-            required: true,
             id: 1
         },
         {
             title: "description",
             type: "textarea",
-            required: false,
             id: 2
         }
     ];
 
     return (
-        <form onSubmit={ location === "new-video" ? handleSubmitVideo : handleSubmitCategory } >
+        <form onSubmit={ handleSubmit } >
             <StyledField>
                 <Input arrayOfInputs={location === "/new-video" 
                         ? videoFormInputs 
