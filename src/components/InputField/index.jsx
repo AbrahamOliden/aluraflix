@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../../context/GlobalContext";
 
@@ -62,28 +62,36 @@ const StyledColor = styled.input`
 
 function Input({ arrayOfInputs, widthOfInputs, location }) {
 
-    const { formData, setFormData, state, dispatch } = useContext(GlobalContext);
+    const { newVideo, setNewVideo, newCategory, setNewCategory, state, dispatch } = useContext(GlobalContext);
     const { categories } = state;
 
     const handleChange = e => {
         const { name, value } = e.target;
-        console.log(formData);
-        // location === "new-video"
-            // ? dispatch({type: "SET_NEW_VIDEO", payload: {[name]: value} })
-            // : 
-            setFormData(prevData => ({ ...prevData, [name]: value }));
+        console.log(newVideo, newCategory);
+        location === "/new-video"
+        ? setNewVideo(prevData => ({ ...prevData, [name]: value }))
+        : setNewCategory(prevData => ({ ...prevData, [name]: value }));
     };
 
-    const SelectInput = ({ type, name, onChange }) => ( //* render StyledDropdown
-        <StyledDropdown type={type} name={name} onChange={onChange} required >
-            <option value="" >Choose a category</option>
-            {
-                categories.map(category => (
-                    <option key={category.title} value={category.title}> {category.title} </option>
-                ))
-            }
-        // </StyledDropdown>
-    );
+    const SelectInput = ({ type, name }) => { //* render StyledDropdown
+
+        return (
+            <StyledDropdown 
+                value={newVideo[name] || ""} 
+                type={type} 
+                name={name} 
+                onChange={handleChange} 
+                required 
+            >
+                <option value="" >Choose a category</option>
+                {
+                    categories.map(category => (
+                        <option key={category.title} value={category.title}> {category.title} </option>
+                    ))
+                }
+            </StyledDropdown>
+        )
+    };
 
     const renderInput = input => { //* Constant that functions as argument to map arrayOfInputs, returns a container and determines the type of input, as well as styling based on properties
 
@@ -101,8 +109,10 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
         };
 
         return (
-            <FlexContainer key={input.id} role="none" $width={
-                InputComponent.target === "textarea" //* This is so Description input is always 100% width
+            <FlexContainer 
+                key={input.id} 
+                role="none" 
+                $width={ InputComponent.target === "textarea" //? This is so Description input is always 100% width
                     ? "100%"
                     : widthOfInputs} >
                 <StyledLabel htmlFor={input.title} >
@@ -110,18 +120,19 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
                 </StyledLabel>
 
                 {
-                input.type === "select"
-                    ? <SelectInput type={input.type} name={input.title} onChange={handleChange} required />
-                    : <InputComponent
-                        type={input.type}
-                        name={input.title}
-                        placeholder={
-                            input.title === "image" || input.title === "video"
-                                ? `Introduce link to ${input.title}`
-                                : `Introduce ${input.title}`
-                        }
-                        required={!(input.title === "description")} //* Only description is optional
-                        onChange={handleChange} />
+                    // input.type === "select"
+                        // ? SelectInput 
+                        // : 
+                        <InputComponent
+                            type={input.type}
+                            name={input.title}
+                            placeholder={
+                                input.title === "image" || input.title === "video"
+                                    ? `Introduce link to ${input.title}`
+                                    : `Introduce ${input.title}`
+                            }
+                            required={!(input.title === "description")} //* Only description is optional
+                            onChange={handleChange} />
                 }
             </FlexContainer>
         )
