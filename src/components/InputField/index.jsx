@@ -61,26 +61,29 @@ const StyledColor = styled.input`
 `;
 
 function Input({ arrayOfInputs, widthOfInputs, location }) {
-    
-    const { setFormData, state } = useContext(GlobalContext);
-    const { categories } =  state;
 
-    const handleChange = e => { 
-        const { name, value} = e.target;
-        setFormData(prevData => ({...prevData, [name]: value}))
+    const { formData, setFormData, state, dispatch } = useContext(GlobalContext);
+    const { categories } = state;
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        console.log(formData);
+        // location === "new-video"
+            // ? dispatch({type: "SET_NEW_VIDEO", payload: {[name]: value} })
+            // : 
+            setFormData(prevData => ({ ...prevData, [name]: value }));
     };
 
-
-    const dropDownElements = () => ( //* function for rendering all category options at dropdown (select) element
-        <StyledDropdown>
-            <option value="" style={{ display: "none" }} >Choose an option</option>
+    const SelectInput = ({ type, name, onChange }) => ( //* render StyledDropdown
+        <StyledDropdown type={type} name={name} onChange={onChange} required >
+            <option value="" >Choose a category</option>
             {
                 categories.map(category => (
-                    <option key={category.title} value={category.title} >{category.title}</option>
+                    <option key={category.title} value={category.title}> {category.title} </option>
                 ))
             }
-        </StyledDropdown>
-    )
+        // </StyledDropdown>
+    );
 
     const renderInput = input => { //* Constant that functions as argument to map arrayOfInputs, returns a container and determines the type of input, as well as styling based on properties
 
@@ -88,36 +91,38 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
             text: StyledText,
             textarea: StyledTextArea,
             color: StyledColor,
-            select: dropDownElements
+            select: SelectInput
         }
 
-        const InputComponent = inputTypes[input.type] || null;
-
-        if (!InputComponent) { //*Error handling in case of some mistake
+        const InputComponent = inputTypes[input.type] || null; //*Error handling in case of some mistake that will not happen at this stage of the project
+        if (!InputComponent) {
             console.log(`Input type not supported: ${input.type}`);
             return null;
         };
 
         return (
             <FlexContainer key={input.id} role="none" $width={
-                InputComponent.target === "textarea" //This is so Description input is always 100% width
+                InputComponent.target === "textarea" //* This is so Description input is always 100% width
                     ? "100%"
                     : widthOfInputs} >
                 <StyledLabel htmlFor={input.title} >
                     {input.title}
                 </StyledLabel>
 
-                <InputComponent
-                    type={input.type}
-                    name={input.title}
-                    placeholder={
-                        input.title === "image" || input.title === "video"
-                            ? `Introduce link to ${input.title}`
-                            : `Introduce ${input.title}`
-                    }
-                    required={!(input.title === "description")} //* Only description is optional
-                    onChange={handleChange}
-                />
+                {
+                input.type === "select"
+                    ? <SelectInput type={input.type} name={input.title} onChange={handleChange} required />
+                    : <InputComponent
+                        type={input.type}
+                        name={input.title}
+                        placeholder={
+                            input.title === "image" || input.title === "video"
+                                ? `Introduce link to ${input.title}`
+                                : `Introduce ${input.title}`
+                        }
+                        required={!(input.title === "description")} //* Only description is optional
+                        onChange={handleChange} />
+                }
             </FlexContainer>
         )
     }
