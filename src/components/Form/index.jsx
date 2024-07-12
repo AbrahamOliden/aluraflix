@@ -17,15 +17,14 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const { formData, setFormData, state, dispatch } = useContext(GlobalContext);
+    const { newVideo, newCategory, state, dispatch } = useContext(GlobalContext);
     const location = useLocation().pathname;
 
     const handleSubmit = e => {
         e.preventDefault();
-        location === "new-video"
-            ? dispatch({type: "SET_NEW_VIDEO", payload: formData})
-            : dispatch({type: "SET_NEW_CATEGORY", payload: formData});
-        // setFormData({});
+        location === "/new-video"
+            ? dispatch({type: "SET_NEW_VIDEO", payload: newVideo})
+            : dispatch({type: "SET_NEW_CATEGORY", payload: newCategory});
     };
 
 
