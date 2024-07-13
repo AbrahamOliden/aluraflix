@@ -12,11 +12,12 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "SET_CATEGORIES":
             return {...state, categories: action.payload};
-        case "SET_NEW_VIDEO": //! This doesnt work yet
-            // const updatedNewVideo = [...state.newVideo[action.payload,category], {...action.payload}];
-            console.log(action.payload);
-            break;
-            // return {...state, categories: updatedNewVideo};
+        case "SET_NEW_VIDEO": //* This kind of works
+            const data = action.payload; 
+            const matchedCategory = state.categories.filter(category => category.title === action.payload.category);
+            const updatedNewVideo = [...matchedCategory[0].videos,  {title, image, path: video} = data ];
+            console.log(updatedNewVideo);
+            return {...state, newVideo: updatedNewVideo};
         case "SET_NEW_CATEGORY":
             const updatedCategories = [...state.categories, {...action.payload, videos: [] }];
             console.log(state.categories);
