@@ -22,9 +22,16 @@ function Form() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        location === "/new-video"
-            ? dispatch({type: "SET_NEW_VIDEO", payload: newVideo})
-            : dispatch({type: "SET_NEW_CATEGORY", payload: newCategory});
+        switch (location) {
+            case "/new-video":
+                dispatch({type: "SET_NEW_VIDEO", payload: {...newVideo}});
+                break;
+            case "/new-category":
+                dispatch({type: "SET_NEW_CATEGORY", payload: {...newCategory}});
+                break;
+            default:
+                return;
+        };
     };
 
 
