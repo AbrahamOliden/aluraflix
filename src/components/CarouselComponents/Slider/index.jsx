@@ -5,8 +5,6 @@ import VideoCardSlider from "../VideoCard";
 
 function MySlider({ videos, color }) {
 
-    // const { videos, color } = props;
-    // console.log(videos);
     const settings = {
         dots: true,
         infinite: true,
