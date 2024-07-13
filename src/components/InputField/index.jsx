@@ -67,10 +67,16 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
 
     const handleChange = e => {
         const { name, value } = e.target;
-        console.log(newVideo, newCategory);
-        location === "/new-video"
-        ? setNewVideo(prevData => ({ ...prevData, [name]: value }))
-        : setNewCategory(prevData => ({ ...prevData, [name]: value }));
+        switch (location) {
+            case "/new-video":
+                setNewVideo(prevData => ({ ...prevData, [name]: value }));
+                break;
+            case "/new-category":
+                setNewCategory(prevData => ({ ...prevData, [name]: value }));
+                break;
+            default:
+                return null;
+        };
     };
 
     const SelectInput = ({ type, name }) => { //* render StyledDropdown
