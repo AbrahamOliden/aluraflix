@@ -5,14 +5,13 @@ import Banner from "../Banner";
 
 function Home() {
     const { state } = useContext(GlobalContext);
-    const { categories } = state;
 
     return (
         <>
             <Banner />
             <main id="home">
                 {
-                    categories.map(category => (
+                    state.map(category => (
                         <Carousel key={category.title} {...category} />
                     ))
                 }
