@@ -12,7 +12,7 @@ function Home() {
             <main id="home">
                 {
                     state.map(category => (
-                        <Carousel key={category.title} {...category} />
+                        <Carousel key={category.id} {...category} />
                     ))
                 }
             </main>

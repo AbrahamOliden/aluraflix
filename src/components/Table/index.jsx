@@ -100,7 +100,7 @@ function Table() {
             <StyledTableBody>
                 {
                     state.map(category => (
-                        <tr key={category.title} >
+                        <tr key={category.id} >
                             <CategoryTitle scope="row" >{category.title}</CategoryTitle>
                             <CategoryDescription>{category.description}</CategoryDescription>
                             <td >

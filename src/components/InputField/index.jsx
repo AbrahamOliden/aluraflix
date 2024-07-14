@@ -91,7 +91,7 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
                 <option value="" >Choose a category</option>
                 {
                     state.map(category => (
-                        <option key={category.title} value={category.title}> {category.title} </option>
+                        <option key={category.id} value={category.title}> {category.title} </option>
                     ))
                 }
             </StyledDropdown>
