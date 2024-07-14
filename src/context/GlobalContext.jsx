@@ -15,7 +15,8 @@ const reducer = (state, action) => {
         case "SET_NEW_VIDEO": //* This kind of works
             const data = action.payload; 
             const matchedCategory = state.categories.filter(category => category.title === action.payload.category);
-            const updatedNewVideo = [...matchedCategory[0].videos,  {title, image, path: video} = data ];
+            const updatedNewVideo = {...matchedCategory[0].videos}
+            // [...matchedCategory[0].videos,  {title, image, path: video} = data ];
             console.log(updatedNewVideo);
             return {...state, newVideo: updatedNewVideo};
         case "SET_NEW_CATEGORY":
@@ -42,6 +43,24 @@ const GlobalContextProvider = ({ children }) => {
 
         getData();
     }, []);
+
+    const addCategory = async (category) => {
+        try {
+            const response = await fetch("https://my-json-server.typicode.com/AbrahamOliden/aluraflix-api/categories", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(category)
+            });
+
+            if (!response.ok) {
+                throw new Error("Connection failed");
+            };
+        } catch (error) {
+            console.error("Error adding category:", error);
+        }
+    }
 
     return (
         <GlobalContext.Provider value={{ state, dispatch, newVideo, setNewVideo, newCategory, setNewCategory}} >
