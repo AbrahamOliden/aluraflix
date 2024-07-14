@@ -63,7 +63,6 @@ const StyledColor = styled.input`
 function Input({ arrayOfInputs, widthOfInputs, location }) {
 
     const { newVideo, setNewVideo, setNewCategory, state } = useContext(GlobalContext);
-    const { categories } = state;
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -91,7 +90,7 @@ function Input({ arrayOfInputs, widthOfInputs, location }) {
             >
                 <option value="" >Choose a category</option>
                 {
-                    categories.map(category => (
+                    state.map(category => (
                         <option key={category.title} value={category.title}> {category.title} </option>
                     ))
                 }
