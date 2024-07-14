@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components";
 import Input from "../InputField";
@@ -17,17 +18,19 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const { newVideo, newCategory, state, dispatch } = useContext(GlobalContext);
+    const { newVideo, newCategory, addCategory, addVideo } = useContext(GlobalContext);
     const location = useLocation().pathname;
 
     const handleSubmit = e => {
         e.preventDefault();
+        const id = uuidv4();
+
         switch (location) {
             case "/new-video":
-                dispatch({type: "SET_NEW_VIDEO", payload: {...newVideo}});
+                addVideo({...newVideo, id});
                 break;
             case "/new-category":
-                dispatch({type: "SET_NEW_CATEGORY", payload: {...newCategory}});
+                addCategory({...newCategory, videos: [], id});
                 break;
             default:
                 return;
