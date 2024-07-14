@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { GlobalContext } from "../../context/GlobalContext";
 
@@ -62,7 +62,7 @@ const StyledColor = styled.input`
 
 function Input({ arrayOfInputs, widthOfInputs, location }) {
 
-    const { newVideo, setNewVideo, newCategory, setNewCategory, state, dispatch } = useContext(GlobalContext);
+    const { newVideo, setNewVideo, setNewCategory, state } = useContext(GlobalContext);
     const { categories } = state;
 
     const handleChange = e => {
