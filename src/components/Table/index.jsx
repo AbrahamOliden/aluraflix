@@ -86,7 +86,6 @@ const TableButton = styled.button`
 
 function Table() {
     const { state } = useContext(GlobalContext);
-    const { categories } = state;
 
     return (
         <StyledTable  >
@@ -100,7 +99,7 @@ function Table() {
             </StyledTableHead>
             <StyledTableBody>
                 {
-                    categories.map(category => (
+                    state.map(category => (
                         <tr key={category.title} >
                             <CategoryTitle scope="row" >{category.title}</CategoryTitle>
                             <CategoryDescription>{category.description}</CategoryDescription>
