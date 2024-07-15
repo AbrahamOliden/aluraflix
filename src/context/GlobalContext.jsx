@@ -2,24 +2,6 @@ import { createContext, useState, useEffect } from "react";
 
 export const GlobalContext = createContext();
 
-// const reducer = (state, action) => {
-//     switch (action.type) {
-//         case "SET_CATEGORIES":
-//             return {...state, categories: action.payload};
-//         case "SET_NEW_VIDEO": //* This kind of works
-//             const data = action.payload; 
-//             const matchedCategory = state.categories.filter(category => category.title === action.payload.category);
-//             const updatedNewVideo = {...matchedCategory[0].videos}
-//             [...matchedCategory[0].videos,  {title, image, path: video} = data ];
-//             console.log(updatedNewVideo);
-//             return {...state, newVideo: updatedNewVideo};
-//         case "SET_NEW_CATEGORY":
-//             const updatedCategories = [...state.categories, {...action.payload, videos: [] }];
-//             console.log(state.categories);
-//             return {...state, categories:  updatedCategories};
-//     };
-// };
-
 const GlobalContextProvider = ({ children }) => {
 
     const [state, setState] = useState([]); //!This will replace reducer and be renamed as state
@@ -64,9 +46,9 @@ const GlobalContextProvider = ({ children }) => {
         }
     };
 
-    const addVideo = async (video) => {
+    const addVideo = async ({ category, description, id, image, title, video }) => {
         try {
-            const response = await fetch(`${connection}?title${video.category}`);
+            const response = await fetch(`${connection}?title=${category}`);
             
             if( !response.ok) {
                 const errorData = await response.text();
@@ -74,7 +56,34 @@ const GlobalContextProvider = ({ children }) => {
             };
             
             const data = await response.json();
-            console.log(data);
+
+            const categoryData = data[0] //* If curent data is fetched successfully, then:
+            const updatedCategoryData = { //* create an Object with current data and add the new video's data
+                ...categoryData, 
+                videos: 
+                    [...categoryData.videos, { title, path: video, image, description, id }  ]
+                };
+            
+            const updateResponse = await fetch(`${connection}/${updatedCategoryData.id}`, { //* Do a PUT method to upload the new video (important to use category's id)
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedCategoryData)
+            });
+
+            if (!updateResponse.ok) { //* Show error if PUT method fails
+                const updateDataError = await updateResponse.text();
+                throw new Error(`Error uploading video: ${updateDataError}`);
+            };
+
+            const updatedCategory = await updateResponse.json();
+            setState(prevState => {
+                const updatedState = prevState.map(category => ( //* map prevState to update only the category of the new video
+                    category.id === updatedCategory.id ? updatedCategory : category)
+                );
+                return updatedState;
+            });
 
         } catch (error) {
             console.error("Error adding video:", error);
