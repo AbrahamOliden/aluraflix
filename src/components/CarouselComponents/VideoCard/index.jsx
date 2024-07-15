@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useContext } from "react";
+import { GlobalContext } from "../../../context/GlobalContext";
 
 const StyledFigure = styled.figure`
     display: flex;
@@ -51,19 +53,21 @@ const StyledCaption = styled.figcaption`
     }
 `;
 
-function VideoCardSlider(props) {
+function VideoCard({ color, description, id, image, title}) {
+
+    const {deleteVideo} = useContext(GlobalContext);
 
     return (
-        <StyledFigure $color={props.color}>
+        <StyledFigure $color={color}>
             <div role="none" >
-                <StyledImage src={props.image} alt={props.title} />
+                <StyledImage src={image} alt={title} />
             </div>
-            <StyledCaption $color={props.color} >
+            <StyledCaption $color={color} >
                 <button>
                     <img src="/edit.png" alt="Edit icon" />
                     Edit
                 </button>
-                <button>
+                <button onClick={() => deleteVideo(id)} >
                     <img src="/trash.png" alt="Delete icon" />
                     Delete
                 </button>
@@ -72,4 +76,4 @@ function VideoCardSlider(props) {
     )
 }
 
-export default VideoCardSlider
+export default VideoCard

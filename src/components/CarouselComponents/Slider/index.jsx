@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import VideoCardSlider from "../VideoCard";
+import VideoCard from "../VideoCard";
 
 function MySlider({ videos, color }) {
 
@@ -34,7 +34,7 @@ function MySlider({ videos, color }) {
             <Slider {...settings} >
                 {
                     videos.map(video => {
-                        return <VideoCardSlider key={video.id} color={color} {...video} />
+                        return <VideoCard key={video.id} color={color} {...video} />
                     })
                 }
             </Slider>
