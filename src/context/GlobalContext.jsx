@@ -90,8 +90,14 @@ const GlobalContextProvider = ({ children }) => {
         } 
     }
 
+    const deleteVideo = async (id) => {
+        console.log(id);
+    }
+
     return (
-        <GlobalContext.Provider value={{ state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo }} >
+        <GlobalContext.Provider value={
+            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo }
+        } >
             {children}
         </GlobalContext.Provider>
     );
