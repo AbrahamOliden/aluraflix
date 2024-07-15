@@ -34,7 +34,7 @@ function Carousel({ title, color, videos }) {
         return (
             <StyledContainer >
                 <StyledHeading $color={color} >{title}</StyledHeading>
-                <MySlider color={color} videos={videos} />
+                <MySlider color={color} videos={videos} category={title} />
             </StyledContainer>
         )
     } else {
