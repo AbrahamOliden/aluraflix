@@ -66,7 +66,16 @@ const GlobalContextProvider = ({ children }) => {
 
     const addVideo = async (video) => {
         try {
-            const response = await fetch(`https://my-json-server.typicode.com/AbrahamOliden/aluraflix-api/categories`)
+            const response = await fetch(`${connection}?title${video.category}`);
+            
+            if( !response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Connection failed: ${errorData}`);
+            };
+            
+            const data = await response.json();
+            console.log(data);
+
         } catch (error) {
             console.error("Error adding video:", error);
         } 
