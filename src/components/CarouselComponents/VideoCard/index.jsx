@@ -24,8 +24,8 @@ const StyledCaption = styled.figcaption`
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: center;
-    padding: 16px;
     background-color: var(--black);
+    padding: 3px;
     border: 3px solid ${props => props.$color};
     border-radius: 0 0 15px 15px;
     box-sizing: border-box;
@@ -39,6 +39,11 @@ const StyledCaption = styled.figcaption`
         background-color: transparent;
         color: inherit;
         border: none;
+        padding: 16px;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--blue);
+        }
         img {
             width: 1rem;
             border: none;
