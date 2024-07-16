@@ -90,8 +90,47 @@ const GlobalContextProvider = ({ children }) => {
         } 
     }
 
-    const deleteVideo = async (id) => {
-        console.log(id);
+    const deleteVideo = async (category, id) => {
+        try {
+            const response = await fetch(`${connection}?title=${category}`);
+
+            if ( !response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Connection failed: ${errorData}`);
+            };
+
+            const data = await response.json();
+            const categoryData = data[0];
+
+            const updatedCategoryData = {
+                ...categoryData,
+                videos: categoryData.videos.filter(video => video.id !== id)
+            };
+
+            const updatedResponse = await fetch(`${connection}/${updatedCategoryData.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedCategoryData)
+            });
+
+            if( !updatedResponse.ok ) {
+                const updateDataError = updatedResponse.text();
+                throw new Error(`Error updating data: ${updateDataError}`);
+            }
+
+            const updatedCategory = await updatedResponse.json();
+            console.log(updatedCategory);
+            setState(prevState => {
+                const updatedState = prevState.map(
+                    category => category.id === updatedCategory.id ? updatedCategory : category
+                );
+                return updatedState;
+            });
+        } catch (error) {
+            console.error("Error removing video:", error);
+        }
     }
 
     return (
