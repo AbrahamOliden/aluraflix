@@ -43,27 +43,27 @@ const GlobalContextProvider = ({ children }) => {
 
         } catch (error) {
             console.error("Error adding category:", error);
-        }
+        };
     };
 
     const addVideo = async ({ category, description, id, image, title, video }) => {
         try {
             const response = await fetch(`${connection}?title=${category}`);
-            
-            if( !response.ok) {
+
+            if (!response.ok) {
                 const errorData = await response.text();
                 throw new Error(`Connection failed: ${errorData}`);
             };
-            
+
             const data = await response.json();
 
             const categoryData = data[0] //* If curent data is fetched successfully, then:
             const updatedCategoryData = { //* create an Object with current data and add the new video's data
-                ...categoryData, 
-                videos: 
-                    [...categoryData.videos, { title, path: video, image, description, id }  ]
-                };
-            
+                ...categoryData,
+                videos:
+                    [...categoryData.videos, { title, path: video, image, description, id }]
+            };
+
             const updateResponse = await fetch(`${connection}/${updatedCategoryData.id}`, { //* Do a PUT method to upload the new video (important to use category's id)
                 method: 'PUT',
                 headers: {
@@ -87,14 +87,35 @@ const GlobalContextProvider = ({ children }) => {
 
         } catch (error) {
             console.error("Error adding video:", error);
-        } 
-    }
+        };
+    };
+
+    const deleteCategory = async (category) => {
+        try {
+            const updateResponse = await fetch(`${connection}/${category.id}`, {
+                method: 'DELETE'
+            });
+
+            if (!updateResponse.ok) {
+                const updateDataError = updateResponse.text();
+                throw new Error(`Error deleting category: ${updateDataError}`);
+            };
+
+            setState(prevState => {
+                const filteredCategories = prevState.filter(cat => cat.id !== category.id);
+                return filteredCategories;
+            });
+
+        } catch (error) {
+            console.error("Error removing category:", error);
+        };
+    };
 
     const deleteVideo = async (category, id) => {
         try {
             const response = await fetch(`${connection}?title=${category}`);
 
-            if ( !response.ok) {
+            if (!response.ok) {
                 const errorData = await response.text();
                 throw new Error(`Connection failed: ${errorData}`);
             };
@@ -115,7 +136,7 @@ const GlobalContextProvider = ({ children }) => {
                 body: JSON.stringify(updatedCategoryData)
             });
 
-            if( !updatedResponse.ok ) {
+            if (!updatedResponse.ok) {
                 const updateDataError = updatedResponse.text();
                 throw new Error(`Error updating data: ${updateDataError}`);
             }
@@ -135,7 +156,7 @@ const GlobalContextProvider = ({ children }) => {
 
     return (
         <GlobalContext.Provider value={
-            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo }
+            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory }
         } >
             {children}
         </GlobalContext.Provider>
