@@ -30,17 +30,33 @@ const StyledForm = styled.form`
 
 function EditForm({ arrayOfInputs, widthOfInputs, location }) {
 
-    const { setIsDialogOpen } = useContext(GlobalContext);
+    const elementToEdit = location === "/new-video" ? "video" : "category";
+
+    const { updateCategory, newCategory, setIsDialogOpen } = useContext(GlobalContext);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        switch(location) {
+             case ("/new-video"):
+                break;
+            case ("/new-category"):
+                updateCategory({...newCategory});
+                setIsDialogOpen(false);
+                break;
+        }
+    }
 
     return (
         <Overlay>
-            <StyledForm>
+            <StyledForm onSubmit={handleSubmit} >
                 <fieldset>
-                    <h2>Hello madafaka</h2>
-                    <p>complete the fakiu to fakiu</p>
+                    <h2>Edit {elementToEdit} </h2>
+                    <p>complete the form to edit this {elementToEdit}</p>
 
                     <Input arrayOfInputs={arrayOfInputs} widthOfInputs={widthOfInputs} location={location} />
                 </fieldset>
+                <button type="submit">Submit</button>
                 <button type="button" onClick={() => setIsDialogOpen(false)} >Close</button>
             </StyledForm>
         </Overlay>
