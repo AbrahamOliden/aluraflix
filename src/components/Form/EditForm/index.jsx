@@ -32,13 +32,15 @@ function EditForm({ arrayOfInputs, widthOfInputs, location }) {
 
     const elementToEdit = location === "/new-video" ? "video" : "category";
 
-    const { updateCategory, newCategory, setIsDialogOpen } = useContext(GlobalContext);
+    const { updateCategory, updateVideo, newCategory, newVideo, setIsDialogOpen } = useContext(GlobalContext);
 
     const handleSubmit = e => {
         e.preventDefault();
 
         switch(location) {
              case ("/new-video"):
+                updateVideo({...newVideo});
+                setIsDialogOpen(false);
                 break;
             case ("/new-category"):
                 updateCategory({...newCategory});
