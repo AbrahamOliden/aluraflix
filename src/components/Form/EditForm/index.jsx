@@ -20,6 +20,8 @@ const StyledForm = styled.form`
     position: relative;
     background-color: var(--dark-gray);
     border: 3px solid var(--blue);
+    overflow: scroll;
+    max-height: 90vh;
     & > fieldset {
         border: none;
         padding: 50px;
