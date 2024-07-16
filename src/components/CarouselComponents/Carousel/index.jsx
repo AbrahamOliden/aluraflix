@@ -32,7 +32,7 @@ const StyledHeading = styled.h4`
     border-radius: 15px;
 `;
 
-function Carousel({ title, color, videos }) {
+function Carousel({ title, color, videos, id }) {
 
     const { isDialogOpen } = useContext(GlobalContext);
 
@@ -41,7 +41,7 @@ function Carousel({ title, color, videos }) {
             <>
                 <StyledContainer >
                     <StyledHeading $color={color} >{title}</StyledHeading>
-                    <MySlider color={color} videos={videos} category={title} />
+                    <MySlider color={color} videos={videos} category={title} categoryId={id} />
                 </StyledContainer>
                 {
                     isDialogOpen && (
