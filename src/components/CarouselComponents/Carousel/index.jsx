@@ -1,5 +1,9 @@
-import styled from "styled-components";
+import { useContext } from "react";
+import { GlobalContext } from "../../../context/GlobalContext";
 import MySlider from "../Slider";
+import EditForm from "../../Form/EditForm";
+import styled from "styled-components";
+import { videoFormInputs } from "../../Form";
 
 const StyledContainer = styled.section`
      display: flex;
@@ -30,12 +34,25 @@ const StyledHeading = styled.h4`
 
 function Carousel({ title, color, videos }) {
 
+    const { isDialogOpen } = useContext(GlobalContext);
+
     if (videos.length > 0) {
         return (
-            <StyledContainer >
-                <StyledHeading $color={color} >{title}</StyledHeading>
-                <MySlider color={color} videos={videos} category={title} />
-            </StyledContainer>
+            <>
+                <StyledContainer >
+                    <StyledHeading $color={color} >{title}</StyledHeading>
+                    <MySlider color={color} videos={videos} category={title} />
+                </StyledContainer>
+                {
+                    isDialogOpen && (
+                        <EditForm
+                            arrayOfInputs={videoFormInputs}
+                            widthOfInputs={"100%"}
+                            location={"/new-video"}
+                        />
+                    )
+                }
+            </>
         )
     } else {
         return (
