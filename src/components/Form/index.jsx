@@ -17,6 +17,34 @@ const StyledField = styled.fieldset`
     border: none;
 `;
 
+export const videoFormInputs = [
+    {
+        title: "title",
+        type: "text",
+        id: 0
+    },
+    {
+        title: "category",
+        type: "select",
+        id: 1
+    },
+    {
+        title: "image",
+        type: "text",
+        id: 2
+    },
+    {
+        title: "video",
+        type: "text",
+        id: 3
+    },
+    {
+        title: "description",
+        type: "textarea",
+        id: 4
+    }
+];
+
 function Form() {
 
     const { newVideo, newCategory, addCategory, addVideo, isDialogOpen } = useContext(GlobalContext);
@@ -39,33 +67,6 @@ function Form() {
     };
 
 
-    const videoFormInputs = [
-        {
-            title: "title",
-            type: "text",
-            id: 0
-        },
-        {
-            title: "category",
-            type: "select",
-            id: 1
-        },
-        {
-            title: "image",
-            type: "text",
-            id: 2
-        },
-        {
-            title: "video",
-            type: "text",
-            id: 3
-        },
-        {
-            title: "description",
-            type: "textarea",
-            id: 4
-        }
-    ];
     const categoryFormInputs = [
         {
             title: "title",
@@ -123,9 +124,7 @@ function Form() {
             </form>
             {isDialogOpen && (
                 <EditForm 
-                    arrayOfInputs={location === "/new-video"
-                        ? videoFormInputs
-                        : categoryFormInputs}
+                    arrayOfInputs={categoryFormInputs}
                     widthOfInputs={"100%"}
                     location={location}
                 />)
