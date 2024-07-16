@@ -85,7 +85,7 @@ const TableButton = styled.button`
 
 
 function Table() {
-    const { state, deleteCategory } = useContext(GlobalContext);
+    const { state, deleteCategory, setIsDialogOpen, setCategoryToEdit } = useContext(GlobalContext);
 
     return (
         <StyledTable  >
@@ -104,7 +104,10 @@ function Table() {
                             <CategoryTitle scope="row" >{category.title}</CategoryTitle>
                             <CategoryDescription>{category.description}</CategoryDescription>
                             <td >
-                                <TableButton type="button" >Edit</TableButton>
+                                <TableButton type="button" onClick={() => {
+                                    setIsDialogOpen(prevData => !prevData);
+                                    setCategoryToEdit(category.id)
+                                    }} >Edit</TableButton>
                             </td>
                             <td>
                                 <TableButton type="button" onClick={() => deleteCategory(category)} >Delete</TableButton>
