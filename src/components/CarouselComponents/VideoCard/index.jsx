@@ -53,7 +53,7 @@ const StyledCaption = styled.figcaption`
     }
 `;
 
-function VideoCard({ color, description, id, image, title}) {
+function VideoCard({ color, id, image, title, category}) {
 
     const {deleteVideo} = useContext(GlobalContext);
 
@@ -67,7 +67,7 @@ function VideoCard({ color, description, id, image, title}) {
                     <img src="/edit.png" alt="Edit icon" />
                     Edit
                 </button>
-                <button onClick={() => deleteVideo(id)} >
+                <button onClick={() => deleteVideo(category, id)} >
                     <img src="/trash.png" alt="Delete icon" />
                     Delete
                 </button>
