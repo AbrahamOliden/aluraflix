@@ -85,7 +85,7 @@ const TableButton = styled.button`
 
 
 function Table() {
-    const { state } = useContext(GlobalContext);
+    const { state, deleteCategory } = useContext(GlobalContext);
 
     return (
         <StyledTable  >
@@ -107,7 +107,7 @@ function Table() {
                                 <TableButton type="button" >Edit</TableButton>
                             </td>
                             <td>
-                                <TableButton type="button" >Delete</TableButton>
+                                <TableButton type="button" onClick={() => deleteCategory(category)} >Delete</TableButton>
                             </td>
                         </tr>
                     ))
