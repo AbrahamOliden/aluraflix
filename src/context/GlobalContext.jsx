@@ -93,6 +93,45 @@ const GlobalContextProvider = ({ children }) => {
         };
     };
 
+    const updateCategory = async (category) => {
+        try {
+            const response = await fetch(`${connection}/${categoryToEdit}`);
+            if ( !response.ok ) {
+                const connectionError = response.text();
+                throw new Error (`Connection failed: ${connectionError}`);
+            };
+
+            const data = await response.json();
+            const updateCategory = {
+                ...data,
+                ...category
+            };
+
+            const updatedResponse = await fetch(`${connection}/${categoryToEdit}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updateCategory)
+            });
+            if( !updatedResponse.ok ) {
+                const updateCategoryError =  updatedResponse.text();
+                throw new Error(`Error updating category: ${updateCategoryError}`);
+            };
+
+            const updatedCategory = await updatedResponse.json();
+
+
+            setState(prevState => {
+                const updatedState = prevState.map(category => category.id === categoryToEdit ? updatedCategory : category);
+                return updatedState;
+            });
+
+        } catch (error) {
+            console.error("Error updating category:", error);
+        }
+    };
+
     const deleteCategory = async (category) => {
         try {
             const updateResponse = await fetch(`${connection}/${category.id}`, {
@@ -159,7 +198,7 @@ const GlobalContextProvider = ({ children }) => {
 
     return (
         <GlobalContext.Provider value={
-            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory, isDialogOpen, setIsDialogOpen, categoryToEdit, setCategoryToEdit }
+            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory, isDialogOpen, setIsDialogOpen, categoryToEdit, setCategoryToEdit, updateCategory }
         } >
             {children}
         </GlobalContext.Provider>
