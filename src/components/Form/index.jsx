@@ -3,9 +3,10 @@ import { useLocation, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../context/GlobalContext";
 import styled from "styled-components";
-import Input from "../InputField";
 import { ButtonContainer, StyledButton } from "../Button";
+import Input from "../InputField";
 import Table from "../Table";
+import EditForm from "./EditForm";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -18,7 +19,7 @@ const StyledField = styled.fieldset`
 
 function Form() {
 
-    const { newVideo, newCategory, addCategory, addVideo } = useContext(GlobalContext);
+    const { newVideo, newCategory, addCategory, addVideo, isDialogOpen } = useContext(GlobalContext);
     const location = useLocation().pathname;
 
     const handleSubmit = e => {
@@ -27,10 +28,10 @@ function Form() {
 
         switch (location) {
             case "/new-video":
-                addVideo({...newVideo, id});
+                addVideo({ ...newVideo, id });
                 break;
             case "/new-category":
-                addCategory({...newCategory, videos: [], id});
+                addCategory({ ...newCategory, videos: [], id });
                 break;
             default:
                 return;
@@ -84,41 +85,54 @@ function Form() {
     ];
 
     return (
-        <form onSubmit={ handleSubmit } >
-            <StyledField>
-                <Input arrayOfInputs={location === "/new-video" 
-                        ? videoFormInputs 
+        <>
+            <form onSubmit={handleSubmit} >
+                <StyledField>
+                    <Input arrayOfInputs={location === "/new-video"
+                        ? videoFormInputs
                         : categoryFormInputs}
-                    widthOfInputs={location === "/new-category"
-                        ? "100%"
-                        : null}
-                    location={location}
-                />
-
-                {location === "/new-category" && (
-                    <Table />
-                )}
-                <ButtonContainer role="none" id="button-container">
-                    <div role="none" >
-                        <StyledButton type="submit" >Submit</StyledButton>
-                        <StyledButton type="reset" >Clear</StyledButton>
-                    </div>
-
-
-                    {location === "/new-video" && (
-                        <Link to="/new-category" >
-                            <StyledButton>New Category</StyledButton>
-                        </Link>
-                    )}
+                        widthOfInputs={location === "/new-category"
+                            ? "100%"
+                            : null}
+                        location={location}
+                    />
 
                     {location === "/new-category" && (
-                        <Link to="/new-video" >
-                            <StyledButton>New Video</StyledButton>
-                        </Link>
+                        <Table />
                     )}
-                </ButtonContainer>
-            </StyledField>
-        </form>
+                    <ButtonContainer role="none" id="button-container">
+                        <div role="none" >
+                            <StyledButton type="submit" >Submit</StyledButton>
+                            <StyledButton type="reset" >Clear</StyledButton>
+                        </div>
+
+
+                        {location === "/new-video" && (
+                            <Link to="/new-category" >
+                                <StyledButton>New Category</StyledButton>
+                            </Link>
+                        )}
+
+                        {location === "/new-category" && (
+                            <Link to="/new-video" >
+                                <StyledButton>New Video</StyledButton>
+                            </Link>
+                        )}
+                    </ButtonContainer>
+                </StyledField>
+            </form>
+            {isDialogOpen && (
+                <EditForm 
+                    arrayOfInputs={location === "/new-video"
+                        ? videoFormInputs
+                        : categoryFormInputs}
+                    widthOfInputs={"100%"}
+                    location={location}
+                />)
+            }
+        </>
+
+
     )
 }
 
