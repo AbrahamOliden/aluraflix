@@ -53,9 +53,9 @@ const StyledCaption = styled.figcaption`
     }
 `;
 
-function VideoCard({ color, id, image, title, category}) {
+function VideoCard({ color, id, image, title, category }) {
 
-    const {deleteVideo} = useContext(GlobalContext);
+    const { deleteVideo, setIsDialogOpen } = useContext(GlobalContext);
 
     return (
         <StyledFigure $color={color}>
@@ -63,7 +63,7 @@ function VideoCard({ color, id, image, title, category}) {
                 <StyledImage src={image} alt={title} />
             </div>
             <StyledCaption $color={color} >
-                <button>
+                <button onClick={() => setIsDialogOpen(true)} >
                     <img src="/edit.png" alt="Edit icon" />
                     Edit
                 </button>
