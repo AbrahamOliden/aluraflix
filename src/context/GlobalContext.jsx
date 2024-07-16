@@ -132,6 +132,48 @@ const GlobalContextProvider = ({ children }) => {
         }
     };
 
+    const updateVideo = async(video) => {
+        const { categoryId, videoId } = videoToEdit;
+        try {
+            const response = await fetch(`${connection}/${categoryId}`);
+            if( !response.ok ) {
+                const connectionError = response.text();
+                throw new Error(`Connection failed: ${connectionError}`);
+            };
+
+            const data = await response.json();
+            const updateVideosArray = data.videos.map(arrayVideo => arrayVideo.id === videoId ? {...video, videoId} : arrayVideo);
+            const updateVideo = {
+                ...data,
+                videos: updateVideosArray
+            };
+
+            const updatedResponse = await fetch(`${connection}/${categoryId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updateVideo)
+            });
+            if( !updatedResponse.ok) {
+                const updateVideoError = updatedResponse.text();
+                throw new Error(`Error updating video: ${updateVideoError}`);
+            };
+
+            const updatedVideoCategory = await updatedResponse.json();
+
+            setState(prevState => {
+                const updatedState = prevState.map(category => category.id === categoryId ? updatedVideoCategory : category );
+                console.log(updatedState);
+                return updatedState;
+
+            });
+
+        } catch (error) {
+            console.error("Error updating video:", error);
+        }
+    }
+
     const deleteCategory = async (category) => {
         try {
             const updateResponse = await fetch(`${connection}/${category.id}`, {
@@ -198,7 +240,7 @@ const GlobalContextProvider = ({ children }) => {
 
     return (
         <GlobalContext.Provider value={
-            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory, isDialogOpen, setIsDialogOpen, categoryToEdit, setCategoryToEdit, updateCategory }
+            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory, isDialogOpen, setIsDialogOpen, categoryToEdit, setCategoryToEdit, videoToEdit, setVideoToEdit, updateCategory, updateVideo }
         } >
             {children}
         </GlobalContext.Provider>
