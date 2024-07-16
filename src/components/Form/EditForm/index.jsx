@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
 import Input from "../../InputField";
+import { StyledButton, ButtonContainer } from "../../Button";
 
 const Overlay = styled.div`
     position: fixed;
@@ -26,7 +27,12 @@ const StyledForm = styled.form`
         border: none;
         padding: 50px;
     }
-`
+`;
+
+const ButtonContainerEdit = styled(ButtonContainer)`
+    justify-content: space-around;
+    padding-bottom: 80px;
+`;
 
 function EditForm({ arrayOfInputs, widthOfInputs, location }) {
 
@@ -37,13 +43,13 @@ function EditForm({ arrayOfInputs, widthOfInputs, location }) {
     const handleSubmit = e => {
         e.preventDefault();
 
-        switch(location) {
-             case ("/new-video"):
-                updateVideo({...newVideo});
+        switch (location) {
+            case ("/new-video"):
+                updateVideo({ ...newVideo });
                 setIsDialogOpen(false);
                 break;
             case ("/new-category"):
-                updateCategory({...newCategory});
+                updateCategory({ ...newCategory });
                 setIsDialogOpen(false);
                 break;
         }
@@ -58,8 +64,10 @@ function EditForm({ arrayOfInputs, widthOfInputs, location }) {
 
                     <Input arrayOfInputs={arrayOfInputs} widthOfInputs={widthOfInputs} location={location} />
                 </fieldset>
-                <button type="submit">Submit</button>
-                <button type="button" onClick={() => setIsDialogOpen(false)} >Close</button>
+                <ButtonContainerEdit>
+                    <StyledButton type="submit">Submit</StyledButton>
+                    <StyledButton type="button" onClick={() => setIsDialogOpen(false)} >Close</StyledButton>
+                </ButtonContainerEdit>
             </StyledForm>
         </Overlay>
     );
