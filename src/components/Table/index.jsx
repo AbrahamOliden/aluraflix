@@ -105,7 +105,7 @@ function Table() {
                             <CategoryDescription>{category.description}</CategoryDescription>
                             <td >
                                 <TableButton type="button" onClick={() => {
-                                    setIsDialogOpen(prevData => !prevData);
+                                    setIsDialogOpen(true);
                                     setCategoryToEdit(category.id)
                                     }} >Edit</TableButton>
                             </td>
