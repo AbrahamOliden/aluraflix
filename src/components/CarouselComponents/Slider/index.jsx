@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import VideoCard from "../VideoCard";
 
-function MySlider({ videos, color, category }) {
+function MySlider({ videos, color, category, categoryId }) {
 
     const settings = {
         dots: true,
@@ -34,7 +34,7 @@ function MySlider({ videos, color, category }) {
             <Slider {...settings} >
                 {
                     videos.map(video => {
-                        return <VideoCard key={video.id} color={color} category={category} {...video} />
+                        return <VideoCard key={video.id} color={color} category={category} {...video} categoryId={categoryId} />
                     })
                 }
             </Slider>
