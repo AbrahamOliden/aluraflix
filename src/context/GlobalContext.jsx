@@ -4,9 +4,10 @@ export const GlobalContext = createContext();
 
 const GlobalContextProvider = ({ children }) => {
 
-    const [state, setState] = useState([]); //!This will replace reducer and be renamed as state
+    const [state, setState] = useState([]);
     const [newVideo, setNewVideo] = useState({});
     const [newCategory, setNewCategory] = useState({});
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     const connection = "https://my-json-server.typicode.com/AbrahamOliden/aluraflix-api/categories";
 
@@ -156,7 +157,7 @@ const GlobalContextProvider = ({ children }) => {
 
     return (
         <GlobalContext.Provider value={
-            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory }
+            { state, setState, newVideo, setNewVideo, newCategory, setNewCategory, addCategory, addVideo, deleteVideo, deleteCategory, isDialogOpen, setIsDialogOpen }
         } >
             {children}
         </GlobalContext.Provider>
