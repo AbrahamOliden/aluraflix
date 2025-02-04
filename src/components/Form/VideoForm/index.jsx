@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { useLocation, Link } from "react-router-dom";
+//import { useLocation, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { GlobalContext } from "../../context/GlobalContext";
+import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
-import { ButtonContainer, StyledButton } from "../Button";
-import Input from "../InputField";
-import Table from "../Table";
-import EditForm from "./EditForm";
+//import { ButtonContainer, StyledButton } from "../Button";
+//import Input from "../InputField";
+//import Table from "../Table";
+//import EditForm from "./EditForm";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -19,39 +19,42 @@ const StyledField = styled.fieldset`
 
 function VideoForm() {
 
+    const {newVideo, addVideo } = useContext(GlobalContext);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const id = uuidv4();
+        addVideo({...newVideo, id});
+    };
 
     return (
-        <>
-            <form>
-                <StyledField>
-                    <h2>New Video</h2>
-                    <p>Fill the form to create a new video card</p>
+        <form onSubmit={handleSubmit}>
+            <StyledField>
+                <h2>New Video</h2>
+                <p>Fill the form to create a new video card</p>
 
-                    <label for="title">
-                        <input type="text" name="title" value="title" id="title">Title</input>
-                    </label>
+                <label for="title">Title
+                    <input type="text" name="title"  id="title" />
+                </label>
 
-                    <label for="category">
-                        <input type="select" name="category" value="category" id="category">Category</input>
-                    </label>
+                <label for="category">Category
+                    <input type="select" name="category" id="category"/>
+                </label>
 
-                    <label for="image">
-                        <input type="url" name="image" value="image" id="image">Image</input>
-                    </label>
+                <label for="image">Image
+                    <input type="url" name="image" id="image"/>
+                </label>
 
-                    <label for="video-source">
-                        <input type="url" name="video-source" value="video-source" id="video-source">Video</input>
-                    </label>
+                <label for="video-source">Video
+                    <input type="url" name="video-source" id="video-source"/>
+                </label>
 
-                    <label for="description">
-                        <textarea name="description" value="descriprion" id="video-source" cols="30" rows="10"></textarea>
-                    </label>
-
-                    <input type="submit" value="">Submit</input>
-                    <input type="reset" value="">Clear</input>
-                </StyledField>
-            </form>
-        </>
+                <label for="description">Description
+                    <textarea name="description" id="video-source" cols="30" rows="10"></textarea>
+                </label>
+               
+            </StyledField>
+        </form>
     )
 };
 
