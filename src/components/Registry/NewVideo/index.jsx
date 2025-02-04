@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Form from "../../Form";
+import VideoForm from "../../Form/VideoForm";
 
 const StyledSection = styled.section`
   min-height: fit-content;
@@ -12,9 +13,9 @@ const StyledSection = styled.section`
 function NewVideo() {
   return (
     <StyledSection>
-      <h1>New Video</h1>
-      <p>Fill the form to create a new video card</p>
-      <Form />
+    
+      <VideoForm/>
+      
     </StyledSection>
   );
 };
