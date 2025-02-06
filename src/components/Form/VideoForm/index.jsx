@@ -10,11 +10,16 @@ import styled from "styled-components";
 
 const StyledField = styled.fieldset`
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 60px 30px;
+    gap: 20px 0;
     border: none;
+
+    &>h2  {
+        font-size: 1.8em;
+        text-transform: uppercase;
+    };
 `;
 
 const StyledLabel = styled.label` 
@@ -26,10 +31,29 @@ const StyledLabel = styled.label`
     text-transform: capitalize;
     text-align: start;
     align-self: start;
+
+    &:first-of-type  {
+       margin-top: 50px;
+    };
 `;
 
 const StyledInput = styled.input` //? All these styles might be combined
     display: block;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 16px;
+    padding: 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+`;
+
+const StyledTextArea = styled.textarea` //? this 1 2
+    display: block;
+    width: 50%;
+    min-width: 350px;
+    height: 180px;
     background-color: var(--dark-gray);
     color: var(--white);
     font-size: 1.2rem;
@@ -57,23 +81,25 @@ function VideoForm() {
                 <p>Fill the form to create a new video card</p>
 
                 <StyledLabel htmlFor="title">Title
-                    <StyledInput type="text" name="title"  id="title" />
+                    <StyledInput type="text" name="title"  id="title" placeholder="Video title"/>
                 </StyledLabel>
 
                 <StyledLabel htmlFor="category">Category
-                    <StyledInput type="select" name="category" id="category"/>
+                    {/*<StyledInput type="select" name="category" id="category" placeholder="Video category"/>
+                    */}
+                    <select />
                 </StyledLabel>
 
-                <StyledLabel htmlFor="image">Image
-                    <StyledInput type="url" name="image" id="image"/>
+                <StyledLabel htmlFor="thumbnail">thumbnail
+                    <StyledInput type="url" name="thumbnail" id="thumbnail" placeholder="Link to video thumbnail"/>
                 </StyledLabel>
 
                 <StyledLabel htmlFor="video-source">Video
-                    <StyledInput type="url" name="video-source" id="video-source"/>
+                    <StyledInput type="url" name="video-source" id="video-source" placeholder="link to video"/>
                 </StyledLabel>
 
                 <StyledLabel htmlFor="description">Description
-                    <textarea name="description" id="video-source" cols="30" rows="10"></textarea>
+                    <StyledTextArea name="description" id="video-source" cols="30" rows="10" placeholder="Add a brief description"></StyledTextArea>
                 </StyledLabel>
                
             </StyledField>
