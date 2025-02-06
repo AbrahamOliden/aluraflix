@@ -10,48 +10,71 @@ import styled from "styled-components";
 
 const StyledField = styled.fieldset`
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: flex-start;
     align-items: center;
     gap: 60px 30px;
     border: none;
 `;
 
+const StyledLabel = styled.label` 
+    margin: 0 0 16px 5px;
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: capitalize;
+    text-align: start;
+    align-self: start;
+`;
+
+const StyledInput = styled.input` //? All these styles might be combined
+    display: block;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 16px;
+    padding: 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+`;
+
 function VideoForm() {
 
     const {newVideo, addVideo } = useContext(GlobalContext);
 
-    const handleSubmit = e => {
+    /*const handleSubmit = e => {
         e.preventDefault();
         const id = uuidv4();
         addVideo({...newVideo, id});
-    };
+    };*/
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <StyledField>
                 <h2>New Video</h2>
                 <p>Fill the form to create a new video card</p>
 
-                <label for="title">Title
-                    <input type="text" name="title"  id="title" />
-                </label>
+                <StyledLabel htmlFor="title">Title
+                    <StyledInput type="text" name="title"  id="title" />
+                </StyledLabel>
 
-                <label for="category">Category
-                    <input type="select" name="category" id="category"/>
-                </label>
+                <StyledLabel htmlFor="category">Category
+                    <StyledInput type="select" name="category" id="category"/>
+                </StyledLabel>
 
-                <label for="image">Image
-                    <input type="url" name="image" id="image"/>
-                </label>
+                <StyledLabel htmlFor="image">Image
+                    <StyledInput type="url" name="image" id="image"/>
+                </StyledLabel>
 
-                <label for="video-source">Video
-                    <input type="url" name="video-source" id="video-source"/>
-                </label>
+                <StyledLabel htmlFor="video-source">Video
+                    <StyledInput type="url" name="video-source" id="video-source"/>
+                </StyledLabel>
 
-                <label for="description">Description
+                <StyledLabel htmlFor="description">Description
                     <textarea name="description" id="video-source" cols="30" rows="10"></textarea>
-                </label>
+                </StyledLabel>
                
             </StyledField>
         </form>
