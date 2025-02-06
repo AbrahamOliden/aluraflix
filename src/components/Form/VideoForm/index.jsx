@@ -102,6 +102,8 @@ function VideoForm() {
                     <StyledTextArea name="description" id="video-source" cols="30" rows="10" placeholder="Add a brief description"></StyledTextArea>
                 </StyledLabel>
                
+                <button type="submit">submit</button>
+                <button type="reset">reset</button>
             </StyledField>
         </form>
     )
