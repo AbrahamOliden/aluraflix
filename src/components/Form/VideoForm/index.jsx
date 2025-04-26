@@ -1,43 +1,83 @@
 import { useContext } from "react";
-//import { useLocation, Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
 //import { ButtonContainer, StyledButton } from "../Button";
-//import Input from "../InputField";
-//import Table from "../Table";
-//import EditForm from "./EditForm";
+
+/**
+ * 
+const StyledDropdown = styled.select` //? and then extend in styled components
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+`;
+
+const StyledTextArea = styled.textarea` //? this 1 2
+    width: 50%;
+    min-width: 350px;
+    height: 180px;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+`;
+
+const StyledColor = styled.input`
+    width: calc( 100% - 36px ); //36 px is for padding and border size
+    padding: 16px;
+    background-color: var(--dark-gray);
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+    box-sizing: content-box;
+`;
+ */
 
 const StyledField = styled.fieldset`
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px 0;
+    gap: 60px 30px;
     border: none;
 
-    &>h2  {
-        font-size: 1.8em;
-        text-transform: uppercase;
-    };
+    &>div {
+        width: 350px;
+        display: flex;
+        flex-flow: column nowrap;
+        text-align: left;
+    }
 `;
 
-const StyledLabel = styled.label` 
-    margin: 0 0 16px 5px;
+const StyledLabel = styled.label`
+    margin: 0 ;
     color: var(--white);
     font-size: 1.2rem;
     font-weight: 600;
     line-height: 24px;
     text-transform: capitalize;
-    text-align: start;
-    align-self: start;
-
-    &:first-of-type  {
-       margin-top: 50px;
-    };
+    text-align: left;
 `;
 
 const StyledInput = styled.input` //? All these styles might be combined
+    display: block;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 16px;
+    padding: 16px;
+    border: 2px solid var(--blue);
+    border-radius: 10px;
+`;
+
+const StyledDropdown = styled.select` //? and then extend in styled components
     display: block;
     background-color: var(--dark-gray);
     color: var(--white);
@@ -66,7 +106,7 @@ const StyledTextArea = styled.textarea` //? this 1 2
 
 function VideoForm() {
 
-    const {newVideo, addVideo } = useContext(GlobalContext);
+    const { newVideo, addVideo, state } = useContext(GlobalContext);
 
     /*const handleSubmit = e => {
         e.preventDefault();
@@ -76,36 +116,52 @@ function VideoForm() {
 
     return (
         <form>
+            <h2>New Video</h2>
+            <p>Fill the form to create a new video card</p>
+
             <StyledField>
-                <h2>New Video</h2>
-                <p>Fill the form to create a new video card</p>
+                <div role="none">
+                    <StyledLabel htmlFor="title">Title
+                        <StyledInput type="text" name="title" id="title" placeholder="Video title" />
+                    </StyledLabel>
+                </div>
 
-                <StyledLabel htmlFor="title">Title
-                    <StyledInput type="text" name="title"  id="title" placeholder="Video title"/>
-                </StyledLabel>
+                <div role="none">
+                    <StyledLabel htmlFor="category">Category
+                        <StyledDropdown >
+                            <option value="">Choose a category</option>
+                        {
+                        /*<StyledInput type="select" name="category" id="category" placeholder="Video category"/>*/
+                        state.map (category => (
+                            <option key={category.id} value={category.title}> {category.title} </option>
+                        ))
+                        }
+                        </StyledDropdown>
+                    </StyledLabel>
+                </div>
 
-                <StyledLabel htmlFor="category">Category
-                    {/*<StyledInput type="select" name="category" id="category" placeholder="Video category"/>
-                    */}
-                    <select />
-                </StyledLabel>
+                <div role="none">
+                    <StyledLabel htmlFor="thumbnail">thumbnail
+                        <StyledInput type="url" name="thumbnail" id="thumbnail" placeholder="Link to video thumbnail" />
+                    </StyledLabel>
+                </div>
 
-                <StyledLabel htmlFor="thumbnail">thumbnail
-                    <StyledInput type="url" name="thumbnail" id="thumbnail" placeholder="Link to video thumbnail"/>
-                </StyledLabel>
+                <div role="none">
+                    <StyledLabel htmlFor="video-source">Video
+                        <StyledInput type="url" name="video-source" id="video-source" placeholder="link to video" />
+                    </StyledLabel>
+                </div>
 
-                <StyledLabel htmlFor="video-source">Video
-                    <StyledInput type="url" name="video-source" id="video-source" placeholder="link to video"/>
-                </StyledLabel>
+                <div role="none">
+                    <StyledLabel htmlFor="description">Description
+                        <StyledTextArea name="description" id="video-source" cols="30" rows="10" placeholder="Add a brief description"></StyledTextArea>
+                    </StyledLabel>
+                </div>
 
-                <StyledLabel htmlFor="description">Description
-                    <StyledTextArea name="description" id="video-source" cols="30" rows="10" placeholder="Add a brief description"></StyledTextArea>
-                </StyledLabel>
-               
                 <button type="submit">submit</button>
                 <button type="reset">reset</button>
             </StyledField>
-        </form>
+        </form >
     )
 };
 
