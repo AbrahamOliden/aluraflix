@@ -2,42 +2,7 @@ import { useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
-//import { ButtonContainer, StyledButton } from "../Button";
-
-/**
- * 
-const StyledDropdown = styled.select` //? and then extend in styled components
-    background-color: var(--dark-gray);
-    color: var(--white);
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding: 16px;
-    border: 2px solid var(--blue);
-    border-radius: 10px;
-`;
-
-const StyledTextArea = styled.textarea` //? this 1 2
-    width: 50%;
-    min-width: 350px;
-    height: 180px;
-    background-color: var(--dark-gray);
-    color: var(--white);
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding: 16px;
-    border: 2px solid var(--blue);
-    border-radius: 10px;
-`;
-
-const StyledColor = styled.input`
-    width: calc( 100% - 36px ); //36 px is for padding and border size
-    padding: 16px;
-    background-color: var(--dark-gray);
-    border: 2px solid var(--blue);
-    border-radius: 10px;
-    box-sizing: content-box;
-`;
- */
+import { ButtonContainer, StyledButton } from "../../Button";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -46,14 +11,14 @@ const StyledField = styled.fieldset`
     align-items: center;
     gap: 60px 30px;
     border: none;
+    `;
 
-    &>div {
-        width: 350px;
-        display: flex;
-        flex-flow: column nowrap;
-        text-align: left;
-    }
-`;
+/*&>div {
+    width: 350px;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: left;
+}*/
 
 const StyledLabel = styled.label`
     margin: 0 ;
@@ -108,14 +73,14 @@ function VideoForm() {
 
     const { newVideo, addVideo, state } = useContext(GlobalContext);
 
-    /*const handleSubmit = e => {
+    const handleSubmit= e => {
         e.preventDefault();
         const id = uuidv4();
-        addVideo({...newVideo, id});
-    };*/
+        addVideo({...newVideo, id})
+    }
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h2>New Video</h2>
             <p>Fill the form to create a new video card</p>
 
@@ -130,12 +95,12 @@ function VideoForm() {
                     <StyledLabel htmlFor="category">Category
                         <StyledDropdown >
                             <option value="">Choose a category</option>
-                        {
-                        /*<StyledInput type="select" name="category" id="category" placeholder="Video category"/>*/
-                        state.map (category => (
-                            <option key={category.id} value={category.title}> {category.title} </option>
-                        ))
-                        }
+                            {
+                                /*<StyledInput type="select" name="category" id="category" placeholder="Video category"/>*/
+                                state.map(category => (
+                                    <option key={category.id} value={category.title}> {category.title} </option>
+                                ))
+                            }
                         </StyledDropdown>
                     </StyledLabel>
                 </div>
@@ -158,8 +123,17 @@ function VideoForm() {
                     </StyledLabel>
                 </div>
 
-                <button type="submit">submit</button>
-                <button type="reset">reset</button>
+                <ButtonContainer>
+
+                    <div>
+
+                        <StyledButton type="submit">submit</StyledButton>
+                        <StyledButton type="reset">reset</StyledButton>
+                    </div>
+
+                    <StyledButton>new category</StyledButton>
+                </ButtonContainer>
+
             </StyledField>
         </form >
     )
