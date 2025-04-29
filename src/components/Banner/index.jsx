@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import MySlider from "../CarouselComponents/Slider";
 
 const StyledContainer = styled.div`
     position: relative;
     z-index: 0;
-    /* 
-        div, img {
-            width: 50%;
-        }
-    } */
+    &>img {
+        max-width: 100%;
+    };
 `;
 
 const StyledSection = styled.section`
@@ -35,22 +32,27 @@ const StyledFigure = styled.figure`
     width: 100%;
     &>img {
         flex: 1;
-        flex-shrink: 2;
+        max-width: 85%;
     };
 `;
 
 const StyledCaption = styled.figcaption`
-    flex: 1;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-evenly;
-    &>#category-banner {
-        font-size: 2.5rem;
-        margin: 0;
-    };
-    &>#category-description {
-        font-size: 1.2rem;
-        margin: 0;
+
+    display: none;
+    
+    @media (min-width: 1024px) {
+        flex: 1;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+        &>#category-banner {
+            font-size: 2.5rem;
+            margin: 0;
+        };
+        &>#category-description {
+            font-size: 1.2rem;
+            margin: 0;
+        }
     }
 `;
 
