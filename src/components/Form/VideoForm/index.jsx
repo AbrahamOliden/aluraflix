@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
 import { ButtonContainer, StyledButton } from "../../Button";
+import { Link } from "react-router-dom";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -131,7 +132,9 @@ function VideoForm() {
                         <StyledButton type="reset">reset</StyledButton>
                     </div>
 
-                    <StyledButton>new category</StyledButton>
+                    <Link to="/new-category">
+                        <StyledButton>new category</StyledButton>
+                    </Link>
                 </ButtonContainer>
 
             </StyledField>
