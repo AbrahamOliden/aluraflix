@@ -81,7 +81,7 @@ function VideoForm() {
 
             <StyledField>
 
-                <TextInput placeholder="video title" inputID="title" />
+                <TextInput placeholder="video title" inputID="title" type="text" />
 
                 <div role="none">
                     <StyledLabel htmlFor="category">Category
@@ -97,9 +97,9 @@ function VideoForm() {
                     </StyledLabel>
                 </div>
 
-                <TextInput placeholder="link to thumbnail" inputID="thumbnail" />
+                <TextInput placeholder="link to thumbnail" inputID="thumbnail" type="url" />
 
-                <TextInput placeholder="link to video source" inputID="video" />
+                <TextInput placeholder="link to video source" inputID="video" type="url" />
 
                 <div role="none">
                     <StyledLabel htmlFor="description">Description
