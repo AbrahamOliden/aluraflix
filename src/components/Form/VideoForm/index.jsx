@@ -4,6 +4,7 @@ import { GlobalContext } from "../../../context/GlobalContext";
 import styled from "styled-components";
 import { ButtonContainer, StyledButton } from "../../Button";
 import { Link } from "react-router-dom";
+import TextInput from "../../InputField/TextInput";
 
 const StyledField = styled.fieldset`
     display: flex;
@@ -12,14 +13,7 @@ const StyledField = styled.fieldset`
     align-items: center;
     gap: 60px 30px;
     border: none;
-    `;
-
-/*&>div {
-    width: 350px;
-    display: flex;
-    flex-flow: column nowrap;
-    text-align: left;
-}*/
+`;
 
 const StyledLabel = styled.label`
     margin: 0 ;
@@ -74,10 +68,10 @@ function VideoForm() {
 
     const { newVideo, addVideo, state } = useContext(GlobalContext);
 
-    const handleSubmit= e => {
+    const handleSubmit = e => {
         e.preventDefault();
         const id = uuidv4();
-        addVideo({...newVideo, id})
+        addVideo({ ...newVideo, id })
     }
 
     return (
@@ -86,11 +80,8 @@ function VideoForm() {
             <p>Fill the form to create a new video card</p>
 
             <StyledField>
-                <div role="none">
-                    <StyledLabel htmlFor="title">Title
-                        <StyledInput type="text" name="title" id="title" placeholder="Video title" />
-                    </StyledLabel>
-                </div>
+
+                <TextInput placeholder="video title" inputID="title" />
 
                 <div role="none">
                     <StyledLabel htmlFor="category">Category
@@ -106,17 +97,9 @@ function VideoForm() {
                     </StyledLabel>
                 </div>
 
-                <div role="none">
-                    <StyledLabel htmlFor="thumbnail">thumbnail
-                        <StyledInput type="url" name="thumbnail" id="thumbnail" placeholder="Link to video thumbnail" />
-                    </StyledLabel>
-                </div>
+                <TextInput placeholder="link to thumbnail" inputID="thumbnail" />
 
-                <div role="none">
-                    <StyledLabel htmlFor="video-source">Video
-                        <StyledInput type="url" name="video-source" id="video-source" placeholder="link to video" />
-                    </StyledLabel>
-                </div>
+                <TextInput placeholder="link to video source" inputID="video" />
 
                 <div role="none">
                     <StyledLabel htmlFor="description">Description
@@ -127,14 +110,13 @@ function VideoForm() {
                 <ButtonContainer>
 
                     <div>
-
                         <StyledButton type="submit">submit</StyledButton>
                         <StyledButton type="reset">reset</StyledButton>
                     </div>
 
                     <Link to="/new-category">
                         <StyledButton>new category</StyledButton>
-                    </Link>
+                    </ Link>
                 </ButtonContainer>
 
             </StyledField>

@@ -25,7 +25,7 @@ const StyledInput = styled.input` //? All these styles might be combined
     border-radius: 10px;
 `;
 
-function TextInput({ placeholder, inputID }) {
+function TextInput({ placeholder, inputID, type }) {
 
     const location = useLocation();
 
@@ -45,7 +45,7 @@ function TextInput({ placeholder, inputID }) {
     return (
         <div role="none">
             <StyledLabel htmlFor={inputID}>{inputID}
-                <StyledInput name={inputID} id={inputID} placeholder={placeholder} />
+                <StyledInput type={type} name={inputID} id={inputID} placeholder={placeholder} />
             </StyledLabel>
         </div>
     );
