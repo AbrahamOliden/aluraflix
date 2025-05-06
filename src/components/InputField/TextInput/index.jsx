@@ -35,9 +35,9 @@ function TextInput({ placeholder, inputID, type }) {
 
         const { name, value } = e.target;
 
-        if (location === "new video") {
+        if (location === "/new-video") {
             setNewVideo(prevData => ({ ...prevData, [name]: value }))
-        } else if (location === "new category") {
+        } else if (location === "/new-category") {
             setNewCategory(prevData => ({ ...prevData, [name]: value }))
         };
     };
