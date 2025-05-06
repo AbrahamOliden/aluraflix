@@ -29,9 +29,9 @@ function TextInput({ placeholder, inputID, type }) {
 
     const location = useLocation();
 
+    const { state, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
+    
     const handleChange = e => {
-
-        const { state, newVideo, setNewVideo, newCategory, setNewCategory } = useContext(GlobalContext);
 
         const { name, value } = e.target;
 
