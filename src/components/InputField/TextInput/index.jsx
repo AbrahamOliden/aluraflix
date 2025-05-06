@@ -45,7 +45,7 @@ function TextInput({ placeholder, inputID, type }) {
     return (
         <div role="none">
             <StyledLabel htmlFor={inputID}>{inputID}
-                <StyledInput type={type} name={inputID} id={inputID} placeholder={placeholder} />
+                <StyledInput onChange={() => handleChange} type={type} name={inputID} id={inputID} placeholder={placeholder} />
             </StyledLabel>
         </div>
     );
